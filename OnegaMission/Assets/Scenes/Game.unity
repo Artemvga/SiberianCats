@@ -729,7 +729,7 @@ Transform:
   m_GameObject: {fileID: 1892160962}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.71, z: 0}
+  m_LocalPosition: {x: 0, y: 2.9580002, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -805,6 +805,7 @@ MonoBehaviour:
   _sprintSpeed: 10
   _characterController: {fileID: 2013393432}
   _playerCamera: {fileID: 931498784}
+  _gravity: 9.8
 --- !u!143 &2013393432
 CharacterController:
   m_ObjectHideFlags: 0
@@ -926,7 +927,7 @@ Transform:
   m_GameObject: {fileID: 2013393430}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.1, z: 0}
+  m_LocalPosition: {x: 0, y: 2.348, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
