@@ -13,8 +13,11 @@ namespace Player
         [SerializeField] private float _sprintSpeed;
         [SerializeField] private CharacterController _characterController;
         [SerializeField] private CinemachineCamera _playerCamera;
+        [SerializeField] private float _gravity = 9.8f;
 
+        private bool _isGrounded;
         private Vector2 _move;
+        private float _verticalVelocity;
 
         private void Start()
         {
@@ -41,7 +44,18 @@ namespace Player
         }
         private void Update()
         {
-            _characterController.Move((GetForwad() * _move.y + GetRight() * _move.x) * Time.deltaTime * _currentSpeed);
+            _isGrounded = _characterController.isGrounded;
+            if (_isGrounded && _verticalVelocity < 0)
+            {
+                _verticalVelocity = -2f;
+            }
+            else
+            {
+                _verticalVelocity += _gravity * Time.deltaTime;
+            }
+            Vector3 horizontalMovement = (GetForwad() * _move.y + GetRight() * _move.x) * Time.deltaTime * _currentSpeed;
+            Vector3 verticalMovement = new Vector3(0, -_verticalVelocity, 0);
+            _characterController.Move((horizontalMovement + verticalMovement) * Time.deltaTime);
         }
 
         private Vector3 GetForwad()
