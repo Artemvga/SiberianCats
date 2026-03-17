@@ -53,7 +53,7 @@ namespace Player
             {
                 _verticalVelocity += _gravity * Time.deltaTime;
             }
-            Vector3 horizontalMovement = (GetForwad() * _move.y + GetRight() * _move.x) * Time.deltaTime * _currentSpeed;
+            Vector3 horizontalMovement = (GetForwad() * _move.y + GetRight() * _move.x) * _currentSpeed;
             Vector3 verticalMovement = new Vector3(0, -_verticalVelocity, 0);
             _characterController.Move((horizontalMovement + verticalMovement) * Time.deltaTime);
         }
