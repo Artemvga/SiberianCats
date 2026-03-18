@@ -5,20 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="382f0c69-9d96-4ad2-ad00-b1da8ca771db" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Items.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Items/Interfaces.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Items/Interfaces/IInteractable.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Items/Interfaces/IInteractable.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Items/Trash.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Items/Trash.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Player/PlayerInteraction.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Player/PlayerInteraction.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.OnegaMission/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.OnegaMission/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Game.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Game.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/InputSystem/Debug/TestInput.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/InputSystem/Debug/TestInput.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Player/PlayerMovement.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Player/PlayerMovement.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Settings/InputSystem_Actions.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Settings/InputSystem_Actions.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Settings/InputSystem_Actions.inputactions" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Settings/InputSystem_Actions.inputactions" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Examples &amp; Extras/Materials/Crate - Surface Shader Scene.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Examples &amp; Extras/Materials/Crate - Surface Shader Scene.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Examples &amp; Extras/Materials/Ground - Logo Scene.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Examples &amp; Extras/Materials/Ground - Logo Scene.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Examples &amp; Extras/Materials/Ground - Surface Shader Scene.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Examples &amp; Extras/Materials/Ground - Surface Shader Scene.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Examples &amp; Extras/Materials/Small Crate_diffuse.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Examples &amp; Extras/Materials/Small Crate_diffuse.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/PackageManagerSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/PackageManagerSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,7 +40,7 @@
     &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;Interact-System-PC&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -118,6 +111,7 @@
       <workItem from="1773737113300" duration="2734000" />
       <workItem from="1773752095154" duration="1108000" />
       <workItem from="1773754517894" duration="1185000" />
+      <workItem from="1773818733255" duration="903000" />
     </task>
     <servers />
   </component>
