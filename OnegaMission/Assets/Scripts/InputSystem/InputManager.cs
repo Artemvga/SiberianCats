@@ -1,18 +1,16 @@
-using System;
 using UnityEngine;
 
 namespace InputSystemProject
 {
     public class InputManager : MonoBehaviour
     {
-        public static InputManager Instance {get; private set; }
+        public static InputManager Instance { get; private set; }
         public InputSystem_Actions actions;
 
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
         public static void Init()
         {
             if (Instance != null) return;
-            
             GameObject go = new GameObject("InputManager");
             Instance = go.AddComponent<InputManager>();
             DontDestroyOnLoad(go);
@@ -25,7 +23,6 @@ namespace InputSystemProject
                 Destroy(gameObject);
                 return;
             }
-         
             actions = new InputSystem_Actions();
             actions.Enable();
         }
@@ -43,9 +40,6 @@ namespace InputSystemProject
                     actions.Player.Disable();
                     break;
             }
-            {
-                
-            }
         }
 
         private void OnDestroy()
@@ -59,4 +53,3 @@ namespace InputSystemProject
         }
     }
 }
-

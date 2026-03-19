@@ -1,64 +1,81 @@
-using System;
-using Unity.Cinemachine;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using InputSystemProject;
+using Unity.Cinemachine;
 
 namespace Player
 {
-    [RequireComponent(typeof(CharacterController))]
     public class PlayerMovement : MonoBehaviour
     {
-        [SerializeField] private float _currentSpeed;
-        [SerializeField] private float _walkSpeed;
-        [SerializeField] private float _sprintSpeed;
+        [SerializeField] private float _walkSpeed = 5f;
+        [SerializeField] private float _sprintSpeed = 10f;
         [SerializeField] private CharacterController _characterController;
         [SerializeField] private CinemachineCamera _playerCamera;
         [SerializeField] private float _gravity = 9.8f;
 
-        private bool _isGrounded;
-        private Vector2 _move;
+        private float _currentSpeed;
+        private Vector2 _moveInput;
         private float _verticalVelocity;
+
+        private void OnEnable()
+        {
+            var playerMap = InputManager.Instance.actions.Player;
+            playerMap.Move.performed += OnMovePerformed;
+            playerMap.Move.canceled += OnMoveCanceled;
+            playerMap.Sprint.performed += OnSprintPerformed;
+            playerMap.Sprint.canceled += OnSprintCanceled;
+        }
+
+        private void OnDisable()
+        {
+            if (InputManager.Instance == null) return;
+            var playerMap = InputManager.Instance.actions.Player;
+            playerMap.Move.performed -= OnMovePerformed;
+            playerMap.Move.canceled -= OnMoveCanceled;
+            playerMap.Sprint.performed -= OnSprintPerformed;
+            playerMap.Sprint.canceled -= OnSprintCanceled;
+        }
+
+        private void OnMovePerformed(InputAction.CallbackContext context)
+        {
+            _moveInput = context.ReadValue<Vector2>();
+        }
+
+        private void OnMoveCanceled(InputAction.CallbackContext context)
+        {
+            _moveInput = Vector2.zero;
+        }
+
+        private void OnSprintPerformed(InputAction.CallbackContext context)
+        {
+            _currentSpeed = _sprintSpeed;
+        }
+
+        private void OnSprintCanceled(InputAction.CallbackContext context)
+        {
+            _currentSpeed = _walkSpeed;
+        }
 
         private void Start()
         {
             _currentSpeed = _walkSpeed;
             Cursor.lockState = CursorLockMode.Locked;
-            Cursor.visible = false;
         }
 
-        public void OnMove(InputValue value)
-        {
-            _move = value.Get<Vector2>();
-        }
-
-        public void OnSprint(InputValue value)
-        {
-            if (value.Get<float>() > 0.5f)
-            {
-                _currentSpeed = _sprintSpeed;
-            }
-            else
-            {
-                _currentSpeed = _walkSpeed;
-            }
-        }
         private void Update()
         {
-            _isGrounded = _characterController.isGrounded;
-            if (_isGrounded && _verticalVelocity < 0)
-            {
+            Vector3 move = (GetForward() * _moveInput.y + GetRight() * _moveInput.x) * _currentSpeed;
+
+            if (_characterController.isGrounded && _verticalVelocity < 0)
                 _verticalVelocity = -2f;
-            }
             else
-            {
-                _verticalVelocity += _gravity * Time.deltaTime;
-            }
-            Vector3 horizontalMovement = (GetForwad() * _move.y + GetRight() * _move.x) * _currentSpeed;
-            Vector3 verticalMovement = new Vector3(0, -_verticalVelocity, 0);
-            _characterController.Move((horizontalMovement + verticalMovement) * Time.deltaTime);
+                _verticalVelocity -= _gravity * Time.deltaTime;
+
+            Vector3 velocity = move + new Vector3(0, _verticalVelocity, 0);
+            _characterController.Move(velocity * Time.deltaTime);
         }
 
-        private Vector3 GetForwad()
+        private Vector3 GetForward()
         {
             Vector3 forward = _playerCamera.transform.forward;
             forward.y = 0;
@@ -73,4 +90,3 @@ namespace Player
         }
     }
 }
-

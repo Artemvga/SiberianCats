@@ -1,60 +1,76 @@
-using System;
 using InputSystemProject;
 using Items;
 using UnityEngine;
-using TMPro;
 using UnityEngine.InputSystem;
 
 namespace Player
 {
     public class PlayerInteraction : MonoBehaviour
     {
-        [SerializeField] public float gracePeriod = 0.2f;
-        [SerializeField] Camera _camera;
-        [SerializeField] float _intaxcaderactionDistance = 10f;
+        [SerializeField] private Camera _camera;
+        [SerializeField] private float _interactionDistance = 10f;
+        [SerializeField] private InteractionUI _interactionUI;
+        [SerializeField] private LayerMask _interactableLayer;
 
-        [SerializeField] private TMP_Text _interactionText;
-        [SerializeField] private GameObject _interactionUI;
-        
         private IInteractable _currentInteractable;
 
         private void Update()
         {
-            InteractionRay();
+            CheckInteractable();
         }
 
-        private void InteractionRay()
+        private void CheckInteractable()
         {
-            Ray ray = _camera.ScreenPointToRay(Vector3.one / 2f);
-            RaycastHit hit;
-            
-            bool hitSomething = false;
-
-            if (Physics.Raycast(ray, out hit, _intaxcaderactionDistance))
+            Ray ray = _camera.ScreenPointToRay(new Vector3(Screen.width / 2f, Screen.height / 2f, 0));
+            if (Physics.Raycast(ray, out RaycastHit hit, _interactionDistance, _interactableLayer))
             {
                 IInteractable interactable = hit.collider.GetComponent<IInteractable>();
-
                 if (interactable != null)
                 {
-                    interactable.Change();
-                    _currentInteractable = interactable;
+                    if (interactable.CanInteract(PlayerTools.Instance))
+                        SetCurrentInteractable(interactable);
+                    else
+                    {
+                        SetCurrentInteractable(null);
+                        _interactionUI.ShowRequirement(interactable);
+                    }
                     return;
                 }
             }
+            SetCurrentInteractable(null);
         }
-        
-        private void OnInteractPerformed(InputAction.CallbackContext contex)
+
+        private void SetCurrentInteractable(IInteractable newInteractable)
+        {
+            if (_currentInteractable == newInteractable) return;
+
+            if (_currentInteractable != null)
+            {
+                _currentInteractable.OnDefocus();
+                _interactionUI.Hide();
+            }
+
+            _currentInteractable = newInteractable;
+
+            if (_currentInteractable != null)
+            {
+                _currentInteractable.OnFocus();
+                _interactionUI.Show(_currentInteractable);
+            }
+        }
+
+        private void OnInteractPerformed(InputAction.CallbackContext context)
         {
             if (_currentInteractable != null)
             {
                 _currentInteractable.Interact();
+                SetCurrentInteractable(null);
             }
         }
 
         private void OnEnable()
         {
             InputManager.Instance.actions.Player.Interact.performed += OnInteractPerformed;
-            Debug.Log("OnInteractPerformed");
         }
 
         private void OnDisable()
