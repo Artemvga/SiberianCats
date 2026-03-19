@@ -5,46 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="382f0c69-9d96-4ad2-ad00-b1da8ca771db" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Items/InteractableBase.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Items/InteractableBase.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Items/InteractionPoint.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Items/InteractionPoint.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Items/InteractionUI.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Items/InteractionUI.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Items/ItemTypeSO.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Items/ItemTypeSO.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Items/PlayerTools.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Items/PlayerTools.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Items/TabletUI.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Items/TabletUI.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Items/ToolItem.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Items/ToolItem.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Items/ToolType.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Items/ToolType.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Items/TrashItem.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/MouseHighlight.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/MouseHighlight.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Player/Inventory.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Player/Inventory.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.OnegaMission/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.OnegaMission/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/!GET_MORE_ASSETS_FOR_FREE.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/!GET_MORE_ASSETS_FOR_FREE/DEV FREEDOM.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/!GET_MORE_ASSETS_FOR_FREE/DEV FREEDOM.txt.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/!GET_MORE_ASSETS_FOR_FREE/DevFreedom.club -  UE and Unity developers community. Q&amp;A, Assets, Tutorials.url" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/!GET_MORE_ASSETS_FOR_FREE/DevFreedom.club -  UE and Unity developers community. Q&amp;A, Assets, Tutorials.url.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Game.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Game.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/InputSystem/InputManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/InputSystem/InputManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Items/Interfaces/IInteractable.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Items/Interfaces/IInteractable.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Items/Trash.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Items/Trash.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Items/TrashItem.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Player/PlayerInteraction.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Player/PlayerInteraction.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Player/PlayerMovement.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Player/PlayerMovement.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Settings/InputSystem_Actions.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Settings/InputSystem_Actions.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Settings/InputSystem_Actions.inputactions" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Settings/InputSystem_Actions.inputactions" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/manifest.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/packages-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/packages-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
