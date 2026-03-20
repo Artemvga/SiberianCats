@@ -15,7 +15,7 @@ namespace Player
         public int MaxSlots => _maxSlots;
         public int ItemsCount => _items.Count;
         public bool IsFull => _items.Count >= _maxSlots;
-        
+
         public event Action OnInventoryChanged;
 
         private void Awake()
@@ -33,11 +33,25 @@ namespace Player
         {
             if (IsFull) return false;
             _items.Add(item);
-            Debug.Log($"Инвентарь: {_items.Count}/{_maxSlots}");
-            OnInventoryChanged?.Invoke(); // вызов события
+            Debug.Log($"Инвентарь: {_items.Count}/{_maxSlots} — добавлен {item.ItemName}");
+            OnInventoryChanged?.Invoke();
             return true;
         }
 
         public List<InteractableBase> GetItems() => new List<InteractableBase>(_items);
+
+        public List<InteractableBase> TakeAllItems()
+        {
+            var list = new List<InteractableBase>(_items);
+            _items.Clear();
+            OnInventoryChanged?.Invoke();
+            return list;
+        }
+
+        public void AddItems(List<InteractableBase> items)
+        {
+            _items.AddRange(items);
+            OnInventoryChanged?.Invoke();
+        }
     }
 }

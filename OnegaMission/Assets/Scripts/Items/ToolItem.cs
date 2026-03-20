@@ -2,17 +2,21 @@ using Player;
 using UnityEngine;
 
 namespace Items
-{ 
+{
+    /// <summary>
+    /// Компонент инструмента (планшет, отвёртка и т.д.).
+    /// Инструменты всегда можно подобрать, независимо от состояния.
+    /// При подборе добавляются в PlayerTools.
+    /// </summary>
     public class ToolItem : InteractableBase
     {
         [SerializeField] private ToolType _toolType;
-
         public ToolType ToolType => _toolType;
 
-        public override bool CanInteract(PlayerTools tools)
-        {
-            return true; 
-        }
+        // Инструменты не показывают требование
+        public override bool ShouldShowRequirement => false;
+
+        public override bool CanInteract(PlayerTools tools) => true;
 
         public override void Interact()
         {
@@ -20,6 +24,7 @@ namespace Items
             {
                 gameObject.SetActive(false);
                 Debug.Log($"Инструмент {ItemName} ({_toolType}) добавлен");
+                OnInteractEvent?.Invoke();
                 Destroy(gameObject);
             }
             else

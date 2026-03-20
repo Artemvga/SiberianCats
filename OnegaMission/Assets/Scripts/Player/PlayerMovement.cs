@@ -5,8 +5,13 @@ using Unity.Cinemachine;
 
 namespace Player
 {
+    /// <summary>
+    /// Управление передвижением игрока с использованием новой Input System.
+    /// Подписывается на действия Move и Sprint из InputManager.
+    /// </summary>
     public class PlayerMovement : MonoBehaviour
     {
+        [Header("Movement Settings")]
         [SerializeField] private float _walkSpeed = 5f;
         [SerializeField] private float _sprintSpeed = 10f;
         [SerializeField] private CharacterController _characterController;
@@ -36,25 +41,10 @@ namespace Player
             playerMap.Sprint.canceled -= OnSprintCanceled;
         }
 
-        private void OnMovePerformed(InputAction.CallbackContext context)
-        {
-            _moveInput = context.ReadValue<Vector2>();
-        }
-
-        private void OnMoveCanceled(InputAction.CallbackContext context)
-        {
-            _moveInput = Vector2.zero;
-        }
-
-        private void OnSprintPerformed(InputAction.CallbackContext context)
-        {
-            _currentSpeed = _sprintSpeed;
-        }
-
-        private void OnSprintCanceled(InputAction.CallbackContext context)
-        {
-            _currentSpeed = _walkSpeed;
-        }
+        private void OnMovePerformed(InputAction.CallbackContext context) => _moveInput = context.ReadValue<Vector2>();
+        private void OnMoveCanceled(InputAction.CallbackContext context) => _moveInput = Vector2.zero;
+        private void OnSprintPerformed(InputAction.CallbackContext context) => _currentSpeed = _sprintSpeed;
+        private void OnSprintCanceled(InputAction.CallbackContext context) => _currentSpeed = _walkSpeed;
 
         private void Start()
         {

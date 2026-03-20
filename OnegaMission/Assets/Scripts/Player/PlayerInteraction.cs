@@ -2,22 +2,30 @@ using InputSystemProject;
 using Items;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Events;
 
 namespace Player
 {
+    /// <summary>
+    /// Основной скрипт взаимодействия игрока.
+    /// Каждый кадр пускает луч из центра экрана, определяет текущий интерактивный объект,
+    /// управляет его подсветкой и отображением информации в UI.
+    /// </summary>
     public class PlayerInteraction : MonoBehaviour
     {
+        [Header("References")]
         [SerializeField] private Camera _camera;
         [SerializeField] private float _interactionDistance = 10f;
         [SerializeField] private InteractionUI _interactionUI;
         [SerializeField] private LayerMask _interactableLayer;
 
+        [Header("Events")]
+        public UnityEvent<IInteractable> OnFocusChanged; // вызывается при смене цели
+        public UnityEvent OnInteract;                     // вызывается при успешном взаимодействии
+
         private IInteractable _currentInteractable;
 
-        private void Update()
-        {
-            CheckInteractable();
-        }
+        private void Update() => CheckInteractable();
 
         private void CheckInteractable()
         {
@@ -28,11 +36,22 @@ namespace Player
                 if (interactable != null)
                 {
                     if (interactable.CanInteract(PlayerTools.Instance))
+                    {
                         SetCurrentInteractable(interactable);
+                    }
                     else
                     {
-                        SetCurrentInteractable(null);
-                        _interactionUI.ShowRequirement(interactable);
+                        // Если объект требует показать причину – показываем requirement
+                        if (interactable.ShouldShowRequirement)
+                        {
+                            SetCurrentInteractable(null);
+                            _interactionUI.ShowRequirement(interactable);
+                        }
+                        else
+                        {
+                            // Иначе просто сбрасываем (никакой информации)
+                            SetCurrentInteractable(null);
+                        }
                     }
                     return;
                 }
@@ -51,6 +70,7 @@ namespace Player
             }
 
             _currentInteractable = newInteractable;
+            OnFocusChanged?.Invoke(newInteractable);
 
             if (_currentInteractable != null)
             {
@@ -64,6 +84,7 @@ namespace Player
             if (_currentInteractable != null)
             {
                 _currentInteractable.Interact();
+                OnInteract?.Invoke();
                 SetCurrentInteractable(null);
             }
         }

@@ -2,6 +2,10 @@ using UnityEngine;
 
 namespace InputSystemProject
 {
+    /// <summary>
+    /// Менеджер ввода (синглтон). Создаётся автоматически до загрузки сцены.
+    /// Содержит экземпляр Input Actions и позволяет переключать карты ввода (Player / UI).
+    /// </summary>
     public class InputManager : MonoBehaviour
     {
         public static InputManager Instance { get; private set; }

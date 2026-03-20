@@ -1,8 +1,11 @@
 namespace Items
 {
+    /// <summary>
+    /// Перечисление возможных типов инструментов, которые может иметь игрок.
+    /// Легко расширяется добавлением новых значений.
+    /// </summary>
     public enum ToolType
     {
-        Tablet,
-        Screwdriver,
+        Tablet,       // планшет
     }
 }

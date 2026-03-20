@@ -1,8 +1,13 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Items
 {
+    /// <summary>
+    /// Управляет отображением информации о текущем интерактивном объекте.
+    /// Содержит текстовые поля для названия, типа, описания, легенды и сообщения о требовании.
+    /// </summary>
     public class InteractionUI : MonoBehaviour
     {
         [SerializeField] private TMP_Text _nameText;
@@ -11,8 +16,12 @@ namespace Items
         [SerializeField] private TMP_Text _loreText;
         [SerializeField] private TMP_Text _requirementText;
 
+        public UnityEvent OnShow;
+        public UnityEvent OnHide;
+
         private void Start() => Hide();
 
+        /// <summary> Показывает информацию об объекте (без требования). </summary>
         public void Show(IInteractable interactable)
         {
             if (interactable == null)
@@ -28,8 +37,10 @@ namespace Items
             _requirementText.text = "";
 
             gameObject.SetActive(true);
+            OnShow?.Invoke();
         }
 
+        /// <summary> Показывает информацию и сообщение о требовании. </summary>
         public void ShowRequirement(IInteractable interactable)
         {
             if (interactable == null)
@@ -45,8 +56,13 @@ namespace Items
             _requirementText.text = "Требуется инструмент";
 
             gameObject.SetActive(true);
+            OnShow?.Invoke();
         }
 
-        public void Hide() => gameObject.SetActive(false);
+        public void Hide()
+        {
+            gameObject.SetActive(false);
+            OnHide?.Invoke();
+        }
     }
 }
