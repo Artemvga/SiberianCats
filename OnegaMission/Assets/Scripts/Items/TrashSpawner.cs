@@ -54,16 +54,26 @@ public class TrashSpawner : MonoBehaviour
             return;
         }
 
-        int count = Mathf.Min(_spawnCount, _spawnPoints.Length, _availableTrash.Count);
+        if (_availableTrash.Count == 0)
+        {
+            Debug.LogError("Нет данных о мусоре для спавна!");
+            return;
+        }
+
+        // Спавним столько, сколько указано в _spawnCount, но не больше чем точек спавна
+        int count = Mathf.Min(_spawnCount, _spawnPoints.Length);
         if (count <= 0) return;
 
+        // Перемешиваем точки спавна для вариативности
         List<Transform> shuffledPoints = new List<Transform>(_spawnPoints);
         Shuffle(shuffledPoints);
 
         for (int i = 0; i < count; i++)
         {
             Transform point = shuffledPoints[i];
-            TrashData data = _availableTrash[i];
+            
+            // 🔥 Выбираем случайный предмет из доступных (с возможностью повторений)
+            TrashData data = _availableTrash[Random.Range(0, _availableTrash.Count)];
 
             string prefabPath = $"{_prefabsFolder}/{data.id}";
             GameObject prefab = Resources.Load<GameObject>(prefabPath);
@@ -79,11 +89,10 @@ public class TrashSpawner : MonoBehaviour
                 trashItem = trashGO.AddComponent<TrashItem>();
 
             ItemTypeSO typeSO = GetTypeSO(data.type);
-            // Используем метод с 5 аргументами
             trashItem.SetData(data.id, data.name, typeSO, data.description, data.lore);
         }
 
-        Debug.Log($"Спавнено {count} предметов мусора.");
+        Debug.Log($"Спавнено {count} предметов мусора (из {_availableTrash.Count} уникальных типов).");
     }
 
     private void Shuffle<T>(List<T> list)

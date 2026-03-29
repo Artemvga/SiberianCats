@@ -247,7 +247,7 @@ Material:
     - _ZWrite: 0
     m_Colors:
     - _BaseColor: {r: 0.67630833, g: 0.82321113, b: 0.9622642, a: 0.8235294}
-    - _Color: {r: 0.67630833, g: 0.82321113, b: 0.9622642, a: 0.8235294}
+    - _Color: {r: 0.6763083, g: 0.82321113, b: 0.9622641, a: 0.8235294}
     - _DiffusionProfileAsset: {r: 0, g: 0, b: 0, a: 0}
     - _DoubleSidedConstants: {r: 1, g: 1, b: -1, a: 0}
     - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}

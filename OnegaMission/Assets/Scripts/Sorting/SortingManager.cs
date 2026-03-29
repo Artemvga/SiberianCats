@@ -13,6 +13,10 @@ public class SortingManager : MonoBehaviour
     [SerializeField] private Camera _sortingCamera;
     [SerializeField] private LayerMask _binLayer;
 
+    [Header("Item Spawn Settings")]
+    [SerializeField] private Vector3 _spawnScale = new Vector3(0.5f, 0.5f, 0.5f); // Скейл предмета на столе
+    [SerializeField] private Vector3 _spawnRotation = Vector3.zero; // Ротация предмета на столе (0, 0, 0)
+
     [Header("Score Settings")]
     [SerializeField] private int _pointsPerCorrect = 10;
     [SerializeField] private int _pointsPerWrong = -5;
@@ -112,7 +116,12 @@ public class SortingManager : MonoBehaviour
         // Активируем и размещаем предмет
         _currentItem.gameObject.SetActive(true);
         _currentItem.transform.position = _spawnPoint.position;
-        _currentItem.transform.rotation = _spawnPoint.rotation;
+        
+        // Устанавливаем ротацию 0, 0, 0
+        _currentItem.transform.rotation = Quaternion.Euler(_spawnRotation);
+        
+        // Устанавливаем скейл 0.5, 0.5, 0.5
+        _currentItem.transform.localScale = _spawnScale;
 
         // Отключаем подсветку и физику
         var outlinable = _currentItem.GetComponent<EPOOutline.Outlinable>();

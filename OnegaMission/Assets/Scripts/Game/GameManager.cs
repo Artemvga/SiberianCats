@@ -35,7 +35,7 @@ public class GameManager : MonoBehaviour
     public void AddScore(int amount)
     {
         _currentScore += amount;
-        OnScoreChanged?.Invoke(_currentScore);
+        OnScoreChanged?.Invoke(_currentScore); // ✅ Важно!
     }
 
     public void SetScore(int value)
