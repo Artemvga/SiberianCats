@@ -1,10 +1,6 @@
 using UnityEngine;
 using UnityEngine.Events;
 
-/// <summary>
-/// Глобальный менеджер игры. Хранит общий счёт игрока.
-/// Создаётся автоматически при запуске и не уничтожается между сценами.
-/// </summary>
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
@@ -14,7 +10,7 @@ public class GameManager : MonoBehaviour
     public int CurrentScore => _currentScore;
 
     [Header("Events")]
-    public UnityEvent<int> OnScoreChanged; // вызывается при изменении счёта
+    public UnityEvent<int> OnScoreChanged;
 
     [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
     public static void Init()

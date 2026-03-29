@@ -5,32 +5,35 @@ using Items;
 using Player;
 using Unity.Cinemachine;
 using UnityEngine.Events;
+using System.Collections.Generic;
 
-/// <summary>
-/// Компонент стола сортировки.
-/// При входе в зону показывает подсказку для входа.
-/// При активации – подсказку для выхода.
-/// </summary>
 public class SortingTable : MonoBehaviour
 {
     [Header("References")]
-    [SerializeField] private Transform _tableCameraPosition;        // позиция камеры при сортировке
-    [SerializeField] private SortingManager _sortingManager;        // менеджер сортировки
-    [SerializeField] private GameObject _enterPrompt;              // подсказка "Нажми E для сортировки"
-    [SerializeField] private GameObject _exitPrompt;               // подсказка "Нажми ESC для выхода"
-    [SerializeField] private PlayerMovement _playerMovement;       // скрипт движения игрока
-    [SerializeField] private CinemachineCamera _playerVirtualCamera; // виртуальная камера игрока
-    [SerializeField] private Camera _mainCamera;                   // основная камера
+    [SerializeField] private Transform _tableCameraPosition;
+    [SerializeField] private SortingManager _sortingManager;
+    [SerializeField] private GameObject _enterPrompt;
+    [SerializeField] private GameObject _exitPrompt;
+    [SerializeField] private PlayerMovement _playerMovement;
+    [SerializeField] private CinemachineCamera _playerVirtualCamera;
+    [SerializeField] private Camera _mainCamera;
 
     [Header("Events")]
-    public UnityEvent OnTableEnter;    // при входе в режим сортировки
-    public UnityEvent OnTableExit;     // при выходе из режима
+    public UnityEvent OnTableEnter;
+    public UnityEvent OnTableExit;
 
     private bool _isPlayerInRange = false;
     private bool _isSortingActive = false;
     private Transform _originalCameraParent;
     private Vector3 _originalCameraPos;
     private Quaternion _originalCameraRot;
+
+    // Для отключения рендеринга игрока и инструментов
+    private List<Renderer> _playerRenderers = new List<Renderer>();
+    private List<bool> _playerRendererStates = new List<bool>();
+    private GameObject _currentToolModel;
+    private List<Renderer> _toolRenderers = new List<Renderer>();
+    private List<bool> _toolRendererStates = new List<bool>();
 
     private void Start()
     {
@@ -84,9 +87,10 @@ public class SortingTable : MonoBehaviour
     public void TryStartSorting()
     {
         if (!_isPlayerInRange || _isSortingActive) return;
-        if (!PlayerTools.Instance.HasTool(ToolType.Tablet))
+        if (!PlayerTools.Instance.HasTool(ToolType.Tablet) ||
+            ActiveTool.Instance.GetCurrentToolType() != ToolType.Tablet)
         {
-            Debug.Log("Для сортировки нужен планшет");
+            Debug.Log("Планшет должен быть экипирован в руке");
             return;
         }
         StartSorting();
@@ -97,15 +101,31 @@ public class SortingTable : MonoBehaviour
         _isSortingActive = true;
         OnTableEnter?.Invoke();
 
+        // Закрываем планшет, если он открыт
+        if (TabletUI.IsOpen)
+        {
+            TabletUI tabletUI = FindObjectOfType<TabletUI>();
+            if (tabletUI != null) tabletUI.CloseIfOpen();
+        }
+
         // Скрываем подсказку входа и показываем подсказку выхода
         if (_enterPrompt != null) _enterPrompt.SetActive(false);
         if (_exitPrompt != null) _exitPrompt.SetActive(true);
 
+        // Отключаем движение игрока
         if (_playerMovement != null) _playerMovement.enabled = false;
         InputManager.Instance.ChangeInputMap(InputType.UI);
 
+        // Отключаем виртуальную камеру
         if (_playerVirtualCamera != null) _playerVirtualCamera.enabled = false;
 
+        // Сохраняем и отключаем рендер игрока
+        SaveAndDisablePlayerRenderers();
+
+        // Сохраняем и отключаем текущую модель инструмента
+        SaveAndDisableToolModel();
+
+        // Перемещаем камеру
         _originalCameraParent = _mainCamera.transform.parent;
         _originalCameraPos = _mainCamera.transform.position;
         _originalCameraRot = _mainCamera.transform.rotation;
@@ -127,11 +147,13 @@ public class SortingTable : MonoBehaviour
         _isSortingActive = false;
         OnTableExit?.Invoke();
 
-        // Скрываем подсказку выхода
-        if (_exitPrompt != null) _exitPrompt.SetActive(false);
-        // Если игрок всё ещё в зоне, показываем подсказку входа
-        if (_enterPrompt != null && _isPlayerInRange) _enterPrompt.SetActive(true);
+        // Восстанавливаем рендер игрока
+        RestorePlayerRenderers();
 
+        // Восстанавливаем модель инструмента
+        RestoreToolModel();
+
+        // Возвращаем камеру
         _mainCamera.transform.SetParent(_originalCameraParent);
         _mainCamera.transform.position = _originalCameraPos;
         _mainCamera.transform.rotation = _originalCameraRot;
@@ -143,6 +165,11 @@ public class SortingTable : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
 
+        // Скрываем подсказку выхода
+        if (_exitPrompt != null) _exitPrompt.SetActive(false);
+        // Если игрок всё ещё в зоне, показываем подсказку входа
+        if (_enterPrompt != null && _isPlayerInRange) _enterPrompt.SetActive(true);
+
         _sortingManager.StopSorting();
     }
 
@@ -150,4 +177,70 @@ public class SortingTable : MonoBehaviour
     {
         if (_isSortingActive) StopSorting();
     }
+
+    #region Visibility Helpers
+
+    private void SaveAndDisablePlayerRenderers()
+    {
+        if (_playerMovement == null) return;
+
+        // Находим все Renderer на объекте игрока и его дочерних объектах
+        var renderers = _playerMovement.GetComponentsInChildren<Renderer>(true);
+        _playerRenderers.Clear();
+        _playerRendererStates.Clear();
+
+        foreach (var r in renderers)
+        {
+            // Пропускаем камеры (если вдруг камера дочерняя)
+            if (r.GetComponent<Camera>() != null) continue;
+
+            _playerRenderers.Add(r);
+            _playerRendererStates.Add(r.enabled);
+            r.enabled = false;
+        }
+    }
+
+    private void RestorePlayerRenderers()
+    {
+        for (int i = 0; i < _playerRenderers.Count; i++)
+        {
+            if (_playerRenderers[i] != null)
+                _playerRenderers[i].enabled = _playerRendererStates[i];
+        }
+        _playerRenderers.Clear();
+        _playerRendererStates.Clear();
+    }
+
+    private void SaveAndDisableToolModel()
+    {
+        if (ActiveTool.Instance == null) return;
+
+        _currentToolModel = ActiveTool.Instance.GetCurrentModel();
+        if (_currentToolModel == null) return;
+
+        var renderers = _currentToolModel.GetComponentsInChildren<Renderer>(true);
+        _toolRenderers.Clear();
+        _toolRendererStates.Clear();
+
+        foreach (var r in renderers)
+        {
+            _toolRenderers.Add(r);
+            _toolRendererStates.Add(r.enabled);
+            r.enabled = false;
+        }
+    }
+
+    private void RestoreToolModel()
+    {
+        for (int i = 0; i < _toolRenderers.Count; i++)
+        {
+            if (_toolRenderers[i] != null)
+                _toolRenderers[i].enabled = _toolRendererStates[i];
+        }
+        _toolRenderers.Clear();
+        _toolRendererStates.Clear();
+        _currentToolModel = null;
+    }
+
+    #endregion
 }

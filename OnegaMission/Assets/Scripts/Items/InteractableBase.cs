@@ -5,39 +5,31 @@ using UnityEngine.Events;
 
 namespace Items
 {
-    /// <summary>
-    /// Абстрактный базовый класс для всех интерактивных объектов.
-    /// Содержит общую логику подсветки (Outlinable), информацию о предмете,
-    /// а также виртуальные методы для переопределения в наследниках.
-    /// </summary>
     public abstract class InteractableBase : MonoBehaviour, IInteractable
     {
         [Header("Item Info")]
         [SerializeField] private string _itemName;
-        [SerializeField] private ItemTypeSO _itemType;          // ссылка на SO с типом
+        [SerializeField] private ItemTypeSO _itemType;
         [SerializeField] [TextArea(3, 5)] private string _description;
         [SerializeField] [TextArea(2, 4)] private string _lore;
 
         [Header("Events")]
-        public UnityEvent OnFocusEvent;      // вызывается при наведении
-        public UnityEvent OnDefocusEvent;    // вызывается при потере фокуса
-        public UnityEvent OnInteractEvent;   // вызывается при успешном взаимодействии
+        public UnityEvent OnFocusEvent;
+        public UnityEvent OnDefocusEvent;
+        public UnityEvent OnInteractEvent;
 
-        // Реализация свойств интерфейса
         public string ItemName => _itemName;
         public string ItemType => _itemType != null ? _itemType.DisplayName : "Неизвестно";
         public string Description => _description;
         public string Lore => _lore;
-        public ItemTypeSO ItemTypeSO => _itemType;  // доступ к SO для сравнения
+        public ItemTypeSO ItemTypeSO => _itemType;
 
-        // По умолчанию не показываем требование (переопределяется при необходимости)
         public virtual bool ShouldShowRequirement => false;
 
         private Outlinable _outlinable;
 
         protected virtual void Start()
         {
-            // Настройка подсветки через EPOOutline
             _outlinable = GetComponent<Outlinable>();
             if (_outlinable == null)
                 _outlinable = gameObject.AddComponent<Outlinable>();
@@ -51,28 +43,34 @@ namespace Items
 
         public virtual void OnFocus()
         {
-            _outlinable.enabled = true;
+            if (_outlinable != null && _outlinable.gameObject != null)
+                _outlinable.enabled = true;
             OnFocusEvent?.Invoke();
         }
 
         public virtual void OnDefocus()
         {
-            _outlinable.enabled = false;
+            // Проверка, что объект не уничтожен
+            if (this == null) return;
+            if (_outlinable != null && _outlinable.gameObject != null)
+                _outlinable.enabled = false;
             OnDefocusEvent?.Invoke();
         }
 
-        /// <summary>
-        /// Базовая проверка: требует планшет.
-        /// Переопределите в наследниках для других условий.
-        /// </summary>
         public virtual bool CanInteract(PlayerTools tools)
         {
             return tools != null && tools.HasTool(ToolType.Tablet);
         }
 
-        /// <summary>
-        /// Абстрактный метод – каждый конкретный тип реализует своё взаимодействие.
-        /// </summary>
         public abstract void Interact();
+        public abstract string GetInteractionMessage();
+
+        public void SetItemInfo(string name, ItemTypeSO type, string description, string lore)
+        {
+            _itemName = name;
+            _itemType = type;
+            _description = description;
+            _lore = lore;
+        }
     }
 }

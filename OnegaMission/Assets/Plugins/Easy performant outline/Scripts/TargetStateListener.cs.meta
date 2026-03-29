@@ -1,18 +1,3 @@
-fileFormatVersion: 2
-guid: 034bc47afcbf5e141a58d5c20b7808e4
-MonoImporter:
-  externalObjects: {}
-  serializedVersion: 2
-  defaultReferences: []
-  executionOrder: 0
-  icon: {instanceID: 0}
-  userData: 
-  assetBundleName: 
-  assetBundleVariant: 
-AssetOrigin:
-  serializedVersion: 1
-  productId: 157187
-  packageName: Easy Performant Outline 2D | 3D (URP / HDRP and Built-in Renderer)
-  packageVersion: 3.5.7
-  assetPath: Assets/Plugins/Easy performant outline/Scripts/TargetStateListener.cs
-  uploadId: 710656
+version https://git-lfs.github.com/spec/v1
+oid sha256:580ab3991de87dcb8d973944b42f3a6ab16c2730e769be27995950882d84c26e
+size 507

@@ -1,18 +1,3 @@
-fileFormatVersion: 2
-guid: 8c7d530bcfbc51043bddc6d2df566e90
-MonoImporter:
-  externalObjects: {}
-  serializedVersion: 2
-  defaultReferences: []
-  executionOrder: 0
-  icon: {instanceID: 0}
-  userData: 
-  assetBundleName: 
-  assetBundleVariant: 
-AssetOrigin:
-  serializedVersion: 1
-  productId: 157187
-  packageName: Easy Performant Outline 2D | 3D (URP / HDRP and Built-in Renderer)
-  packageVersion: 3.5.7
-  assetPath: Assets/Plugins/Easy performant outline/Demo/Scripts/UsecaseSwitcher.cs
-  uploadId: 710656
+version https://git-lfs.github.com/spec/v1
+oid sha256:98d366d169f3e661108f883f3b60c6e718c7f4d50411172b11ccaa0c04510c40
+size 508

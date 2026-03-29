@@ -1,16 +1,3 @@
-%YAML 1.1
-%TAG !u! tag:unity3d.com,2011:
---- !u!114 &11400000
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6f2e6ab219484738a5617f767a348a23, type: 3}
-  m_Name: Rubber
-  m_EditorClassIdentifier: Assembly-CSharp::Items.ItemTypeSO
-  _typeName: Rubber
-  _displayName: "\u0420\u0435\u0437\u0438\u043D\u0430"
+version https://git-lfs.github.com/spec/v1
+oid sha256:c2644ef3e9e4672cec43a00af29043cb041a2e1a4a9ccf65a32198cc8439be54
+size 503

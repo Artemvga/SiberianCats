@@ -1,16 +1,3 @@
-fileFormatVersion: 2
-guid: 92c9617bf08c13449ba788985685da49
-timeCreated: 1547400236
-licenseType: Store
-NativeFormatImporter:
-  userData: 
-  assetBundleName: 
-  assetBundleVariant: 
-AssetOrigin:
-  serializedVersion: 1
-  productId: 157187
-  packageName: Easy Performant Outline 2D | 3D (URP / HDRP and Built-in Renderer)
-  packageVersion: 3.5.7
-  assetPath: Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free
-    2D Demo Character sprite sheet/Animation/Run.anim
-  uploadId: 710656
+version https://git-lfs.github.com/spec/v1
+oid sha256:892b0b8eb84f71f51fafa63608fcd17521df5b0a0f9ad6246c8b7a77cfc5e009
+size 500

@@ -1,10 +1,3 @@
-﻿fileFormatVersion: 2
-guid: 89335b24073140a88c9e6e558861fd28
-timeCreated: 1730049119
-AssetOrigin:
-  serializedVersion: 1
-  productId: 157187
-  packageName: Easy Performant Outline 2D | 3D (URP / HDRP and Built-in Renderer)
-  packageVersion: 3.5.7
-  assetPath: Assets/Plugins/Easy performant outline/Scripts/Utilities/PipelineFetcher.cs
-  uploadId: 710656
+version https://git-lfs.github.com/spec/v1
+oid sha256:e852072faa0d6b109611c4dba9ef9a78b45a272ae97bf437b6ff6ae723c1b66f
+size 357

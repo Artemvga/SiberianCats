@@ -45,6 +45,12 @@ namespace Items
             }
         }
 
+        public override string GetInteractionMessage()
+        {
+            //asd
+            return _successMessage;
+        }
+
         public override void Interact()
         {
             if (CanInteract(PlayerTools.Instance))

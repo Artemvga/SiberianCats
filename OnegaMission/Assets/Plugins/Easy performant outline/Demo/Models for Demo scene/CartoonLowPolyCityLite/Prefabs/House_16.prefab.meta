@@ -1,14 +1,3 @@
-fileFormatVersion: 2
-guid: dab3d93fd2764dc45988adf7d412c1b3
-PrefabImporter:
-  externalObjects: {}
-  userData: 
-  assetBundleName: 
-  assetBundleVariant: 
-AssetOrigin:
-  serializedVersion: 1
-  productId: 157187
-  packageName: Easy Performant Outline 2D | 3D (URP / HDRP and Built-in Renderer)
-  packageVersion: 3.5.7
-  assetPath: Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/CartoonLowPolyCityLite/Prefabs/House_16.prefab
-  uploadId: 710656
+version https://git-lfs.github.com/spec/v1
+oid sha256:e0fab8d989ac57eca0a025380c87a004cb4764f8e64ec82d2c8cf75f3cd51251
+size 461

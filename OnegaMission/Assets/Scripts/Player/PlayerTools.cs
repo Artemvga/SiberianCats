@@ -5,10 +5,6 @@ using UnityEngine;
 
 namespace Player
 {
-    /// <summary>
-    /// Хранилище инструментов игрока. Не имеет ограничений.
-    /// При добавлении инструмента вызывает событие OnToolsChanged.
-    /// </summary>
     public class PlayerTools : MonoBehaviour
     {
         public static PlayerTools Instance { get; private set; }
@@ -32,12 +28,23 @@ namespace Player
         {
             if (tool == null) return false;
             _tools.Add(tool);
-            Debug.Log($"Инструмент {tool.ItemName} добавлен. Всего инструментов: {_tools.Count}");
+            Debug.Log($"Инструмент {tool.ItemName} ({tool.ToolType}) добавлен");
             OnToolsChanged?.Invoke();
             return true;
         }
 
         public bool HasTool(ToolType type) => _tools.Exists(t => t.ToolType == type);
         public List<ToolItem> GetAllTools() => new List<ToolItem>(_tools);
+
+        public void ClearTools()
+        {
+            foreach (var tool in _tools)
+            {
+                if (tool != null && tool.gameObject != null)
+                    Destroy(tool.gameObject);
+            }
+            _tools.Clear();
+            OnToolsChanged?.Invoke();
+        }
     }
 }

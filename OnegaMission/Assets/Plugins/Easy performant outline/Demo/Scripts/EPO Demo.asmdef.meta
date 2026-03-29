@@ -1,14 +1,3 @@
-fileFormatVersion: 2
-guid: 1d41bdd17bdf4c94eb132fc8d677167d
-AssemblyDefinitionImporter:
-  externalObjects: {}
-  userData: 
-  assetBundleName: 
-  assetBundleVariant: 
-AssetOrigin:
-  serializedVersion: 1
-  productId: 157187
-  packageName: Easy Performant Outline 2D | 3D (URP / HDRP and Built-in Renderer)
-  packageVersion: 3.5.7
-  assetPath: Assets/Plugins/Easy performant outline/Demo/Scripts/EPO Demo.asmdef
-  uploadId: 710656
+version https://git-lfs.github.com/spec/v1
+oid sha256:0806de0c7f17fab8ae33d40fc94f12d85adebc91b1723d143158ce1fecda19db
+size 428

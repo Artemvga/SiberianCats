@@ -4,10 +4,6 @@ using Player;
 using UnityEngine;
 using UnityEngine.Events;
 
-/// <summary>
-/// Компонент для стола, реализующий IInteractable.
-/// Позволяет активировать стол нажатием E, если у игрока есть планшет.
-/// </summary>
 public class TableInteraction : MonoBehaviour, IInteractable
 {
     [Header("Settings")]
@@ -56,10 +52,14 @@ public class TableInteraction : MonoBehaviour, IInteractable
     }
 
     public bool CanInteract(PlayerTools tools) => tools.HasTool(ToolType.Tablet);
+    public void Interact() => _sortingTable.TryStartSorting();
 
-    public void Interact()
+    public string GetInteractionMessage()
     {
-        _sortingTable.TryStartSorting();
-        OnInteractEvent?.Invoke();
+        if (PlayerTools.Instance.HasTool(ToolType.Tablet) &&
+            ActiveTool.Instance.GetCurrentToolType() == ToolType.Tablet)
+            return "Нажмите E, чтобы сортировать мусор";
+        else
+            return "Возьмите планшет в руки (1)";
     }
 }

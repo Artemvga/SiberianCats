@@ -1,14 +1,3 @@
-fileFormatVersion: 2
-guid: eb7355fad9e877d41ab5a04f85c7b2b0
-PrefabImporter:
-  externalObjects: {}
-  userData: 
-  assetBundleName: 
-  assetBundleVariant: 
-AssetOrigin:
-  serializedVersion: 1
-  productId: 157187
-  packageName: Easy Performant Outline 2D | 3D (URP / HDRP and Built-in Renderer)
-  packageVersion: 3.5.7
-  assetPath: Assets/Plugins/Easy performant outline/Demo/Prefabs/Speech bubble.prefab
-  uploadId: 710656
+version https://git-lfs.github.com/spec/v1
+oid sha256:670cc2ccd13eff738943d6890e706c1a0e9ccd502527a0c17a2c04270c0a13dd
+size 421

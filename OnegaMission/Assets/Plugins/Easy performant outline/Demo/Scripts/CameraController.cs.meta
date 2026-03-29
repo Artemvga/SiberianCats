@@ -1,18 +1,3 @@
-fileFormatVersion: 2
-guid: a62326ad06e40944ba38b5f8459852e6
-MonoImporter:
-  externalObjects: {}
-  serializedVersion: 2
-  defaultReferences: []
-  executionOrder: 0
-  icon: {instanceID: 0}
-  userData: 
-  assetBundleName: 
-  assetBundleVariant: 
-AssetOrigin:
-  serializedVersion: 1
-  productId: 157187
-  packageName: Easy Performant Outline 2D | 3D (URP / HDRP and Built-in Renderer)
-  packageVersion: 3.5.7
-  assetPath: Assets/Plugins/Easy performant outline/Demo/Scripts/CameraController.cs
-  uploadId: 710656
+version https://git-lfs.github.com/spec/v1
+oid sha256:98c41d6c86fde7e0ec6e79ed51b7ef0e2a4bbd08d1294602ea7b880f72cf8936
+size 509

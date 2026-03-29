@@ -1,15 +1,3 @@
-fileFormatVersion: 2
-guid: a2c5a483b539372a88c2c6f5411894d4
-NativeFormatImporter:
-  externalObjects: {}
-  mainObjectFileID: 2100000
-  userData: 
-  assetBundleName: 
-  assetBundleVariant: 
-AssetOrigin:
-  serializedVersion: 1
-  productId: 157187
-  packageName: Easy Performant Outline 2D | 3D (URP / HDRP and Built-in Renderer)
-  packageVersion: 3.5.7
-  assetPath: Assets/Plugins/Easy performant outline/Resources/Easy performant outline/Materials/_EdgeDilate.mat
-  uploadId: 710656
+version https://git-lfs.github.com/spec/v1
+oid sha256:662e5147b88d92ffafff620dd6575da8bad6dd19b72df03eb945d19aa85f008f
+size 481

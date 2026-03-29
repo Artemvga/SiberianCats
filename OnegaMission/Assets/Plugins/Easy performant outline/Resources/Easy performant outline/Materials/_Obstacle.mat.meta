@@ -1,15 +1,3 @@
-fileFormatVersion: 2
-guid: 6433b3da7ff3843059ff4834ed009a2d
-NativeFormatImporter:
-  externalObjects: {}
-  mainObjectFileID: 2100000
-  userData: 
-  assetBundleName: 
-  assetBundleVariant: 
-AssetOrigin:
-  serializedVersion: 1
-  productId: 157187
-  packageName: Easy Performant Outline 2D | 3D (URP / HDRP and Built-in Renderer)
-  packageVersion: 3.5.7
-  assetPath: Assets/Plugins/Easy performant outline/Resources/Easy performant outline/Materials/_Obstacle.mat
-  uploadId: 710656
+version https://git-lfs.github.com/spec/v1
+oid sha256:5910a8e51be7455c27501fd84c61679864340de7761b288947a8376657b3261c
+size 479

@@ -4,65 +4,64 @@ using UnityEngine.Events;
 
 namespace Items
 {
-    /// <summary>
-    /// Управляет отображением информации о текущем интерактивном объекте.
-    /// Содержит текстовые поля для названия, типа, описания, легенды и сообщения о требовании.
-    /// </summary>
     public class InteractionUI : MonoBehaviour
     {
+        [Header("Panels")]
+        [SerializeField] private GameObject _contentPanel; // панель, которая включается/выключается
+
+        [Header("Text Fields")]
         [SerializeField] private TMP_Text _nameText;
         [SerializeField] private TMP_Text _typeText;
         [SerializeField] private TMP_Text _descriptionText;
         [SerializeField] private TMP_Text _loreText;
-        [SerializeField] private TMP_Text _requirementText;
+        [SerializeField] private TMP_Text _promptText;
 
         public UnityEvent OnShow;
-        public UnityEvent OnHide;
+        public UnityEvent OnClear;
 
-        private void Start() => Hide();
+        private void Awake()
+        {
+            // При старте панель выключена
+            if (_contentPanel != null)
+                _contentPanel.SetActive(false);
+            else
+                Debug.LogWarning("InteractionUI: _contentPanel не назначен!");
+        }
 
-        /// <summary> Показывает информацию об объекте (без требования). </summary>
-        public void Show(IInteractable interactable)
+        public void Show(IInteractable interactable, string prompt)
         {
             if (interactable == null)
             {
-                Hide();
+                ClearContent();
                 return;
             }
 
-            _nameText.text = interactable.ItemName;
-            _typeText.text = interactable.ItemType;
-            _descriptionText.text = interactable.Description;
-            _loreText.text = interactable.Lore;
-            _requirementText.text = "";
+            // Заполняем текстовые поля
+            if (_nameText != null) _nameText.text = interactable.ItemName;
+            if (_typeText != null) _typeText.text = interactable.ItemType;
+            if (_descriptionText != null) _descriptionText.text = interactable.Description;
+            if (_loreText != null) _loreText.text = interactable.Lore;
+            if (_promptText != null) _promptText.text = prompt;
 
-            gameObject.SetActive(true);
+            // Включаем панель
+            if (_contentPanel != null) _contentPanel.SetActive(true);
+
             OnShow?.Invoke();
         }
 
-        /// <summary> Показывает информацию и сообщение о требовании. </summary>
-        public void ShowRequirement(IInteractable interactable)
+        public void ClearContent()
         {
-            if (interactable == null)
-            {
-                Hide();
-                return;
-            }
+            // Очищаем текст (опционально)
+            if (_nameText != null) _nameText.text = "";
+            if (_typeText != null) _typeText.text = "";
+            if (_descriptionText != null) _descriptionText.text = "";
+            if (_loreText != null) _loreText.text = "";
+            if (_promptText != null) _promptText.text = "";
 
-            _nameText.text = interactable.ItemName;
-            _typeText.text = interactable.ItemType;
-            _descriptionText.text = interactable.Description;
-            _loreText.text = interactable.Lore;
-            _requirementText.text = "Требуется инструмент";
+            // Выключаем панель
+            if (_contentPanel != null) _contentPanel.SetActive(false);
 
-            gameObject.SetActive(true);
-            OnShow?.Invoke();
-        }
-
-        public void Hide()
-        {
-            gameObject.SetActive(false);
-            OnHide?.Invoke();
+            OnClear?.Invoke();
         }
     }
 }

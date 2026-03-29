@@ -1,16 +1,3 @@
-fileFormatVersion: 2
-guid: 77ea1b923175bd6439416078316b6264
-ShaderImporter:
-  externalObjects: {}
-  defaultTextures: []
-  nonModifiableTextures: []
-  userData: 
-  assetBundleName: 
-  assetBundleVariant: 
-AssetOrigin:
-  serializedVersion: 1
-  productId: 157187
-  packageName: Easy Performant Outline 2D | 3D (URP / HDRP and Built-in Renderer)
-  packageVersion: 3.5.7
-  assetPath: Assets/Plugins/Easy performant outline/Resources/Easy performant outline/Shaders/Fills/Dots.shader
-  uploadId: 710656
+version https://git-lfs.github.com/spec/v1
+oid sha256:8e456e8d2e93fa704302b8e58e465cb5c0d3203fa349055f2afb893a2e927ca9
+size 497

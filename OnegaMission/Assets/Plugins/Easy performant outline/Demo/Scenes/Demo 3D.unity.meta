@@ -1,14 +1,3 @@
-fileFormatVersion: 2
-guid: db296b0c3707bca4eb38edeba458c24f
-DefaultImporter:
-  externalObjects: {}
-  userData: 
-  assetBundleName: 
-  assetBundleVariant: 
-AssetOrigin:
-  serializedVersion: 1
-  productId: 157187
-  packageName: Easy Performant Outline 2D | 3D (URP / HDRP and Built-in Renderer)
-  packageVersion: 3.5.7
-  assetPath: Assets/Plugins/Easy performant outline/Demo/Scenes/Demo 3D.unity
-  uploadId: 710656
+version https://git-lfs.github.com/spec/v1
+oid sha256:e72d6bc1952130a1aa2d6361fd05ff10f968d14389c8407a4930e853c4bcc125
+size 414

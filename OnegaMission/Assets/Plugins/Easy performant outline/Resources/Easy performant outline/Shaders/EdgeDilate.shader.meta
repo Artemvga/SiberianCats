@@ -1,16 +1,3 @@
-fileFormatVersion: 2
-guid: a93bbd9d0feddc14c8b8052f10356c3e
-ShaderImporter:
-  externalObjects: {}
-  defaultTextures: []
-  nonModifiableTextures: []
-  userData: 
-  assetBundleName: 
-  assetBundleVariant: 
-AssetOrigin:
-  serializedVersion: 1
-  productId: 157187
-  packageName: Easy Performant Outline 2D | 3D (URP / HDRP and Built-in Renderer)
-  packageVersion: 3.5.7
-  assetPath: Assets/Plugins/Easy performant outline/Resources/Easy performant outline/Shaders/EdgeDilate.shader
-  uploadId: 710656
+version https://git-lfs.github.com/spec/v1
+oid sha256:55a0964b96e30b49250ce379b110725aa5b01ca555e4d344637b83e2ea7f80c2
+size 497

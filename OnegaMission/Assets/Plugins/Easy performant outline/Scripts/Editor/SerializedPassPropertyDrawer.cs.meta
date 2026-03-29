@@ -1,18 +1,3 @@
-fileFormatVersion: 2
-guid: ee58bf6e03314ac44a3aefa3e59475f4
-MonoImporter:
-  externalObjects: {}
-  serializedVersion: 2
-  defaultReferences: []
-  executionOrder: 0
-  icon: {instanceID: 0}
-  userData: 
-  assetBundleName: 
-  assetBundleVariant: 
-AssetOrigin:
-  serializedVersion: 1
-  productId: 157187
-  packageName: Easy Performant Outline 2D | 3D (URP / HDRP and Built-in Renderer)
-  packageVersion: 3.5.7
-  assetPath: Assets/Plugins/Easy performant outline/Scripts/Editor/SerializedPassPropertyDrawer.cs
-  uploadId: 710656
+version https://git-lfs.github.com/spec/v1
+oid sha256:91e2f240b0d11fd4a36c87d60cfbfcc8958c7d7e60982b763f8bea635da5e37c
+size 523

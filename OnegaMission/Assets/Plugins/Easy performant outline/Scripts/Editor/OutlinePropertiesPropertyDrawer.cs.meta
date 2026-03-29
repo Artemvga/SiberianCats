@@ -1,18 +1,3 @@
-fileFormatVersion: 2
-guid: db921f9fa4de2e642981132a45747b41
-MonoImporter:
-  externalObjects: {}
-  serializedVersion: 2
-  defaultReferences: []
-  executionOrder: 0
-  icon: {instanceID: 0}
-  userData: 
-  assetBundleName: 
-  assetBundleVariant: 
-AssetOrigin:
-  serializedVersion: 1
-  productId: 157187
-  packageName: Easy Performant Outline 2D | 3D (URP / HDRP and Built-in Renderer)
-  packageVersion: 3.5.7
-  assetPath: Assets/Plugins/Easy performant outline/Scripts/Editor/OutlinePropertiesPropertyDrawer.cs
-  uploadId: 710656
+version https://git-lfs.github.com/spec/v1
+oid sha256:250a65ec378ec08aa07a78e4633dfd31637222f157da464e9a893037907a3bc7
+size 526

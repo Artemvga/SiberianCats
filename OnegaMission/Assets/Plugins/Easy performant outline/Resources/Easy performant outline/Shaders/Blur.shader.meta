@@ -1,16 +1,3 @@
-fileFormatVersion: 2
-guid: 0a0d542d285885e4cb4e932656978358
-ShaderImporter:
-  externalObjects: {}
-  defaultTextures: []
-  nonModifiableTextures: []
-  userData: 
-  assetBundleName: 
-  assetBundleVariant: 
-AssetOrigin:
-  serializedVersion: 1
-  productId: 157187
-  packageName: Easy Performant Outline 2D | 3D (URP / HDRP and Built-in Renderer)
-  packageVersion: 3.5.7
-  assetPath: Assets/Plugins/Easy performant outline/Resources/Easy performant outline/Shaders/Blur.shader
-  uploadId: 710656
+version https://git-lfs.github.com/spec/v1
+oid sha256:14c725c3f5765fad2d1cc40ba220ef0d02b04f90a1f185e917c008bc6daceabc
+size 491

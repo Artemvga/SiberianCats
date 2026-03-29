@@ -1,18 +1,3 @@
-fileFormatVersion: 2
-guid: 5e2be7690b1afa24ab54f137c913fdfe
-MonoImporter:
-  externalObjects: {}
-  serializedVersion: 2
-  defaultReferences: []
-  executionOrder: 0
-  icon: {instanceID: 0}
-  userData: 
-  assetBundleName: 
-  assetBundleVariant: 
-AssetOrigin:
-  serializedVersion: 1
-  productId: 157187
-  packageName: Easy Performant Outline 2D | 3D (URP / HDRP and Built-in Renderer)
-  packageVersion: 3.5.7
-  assetPath: Assets/Plugins/Easy performant outline/Demo/Scripts/InteractableObject.cs
-  uploadId: 710656
+version https://git-lfs.github.com/spec/v1
+oid sha256:6cfaceb129329f288488cdc5f1fe522ea504754ffac3d404cfb4544cb670cb7a
+size 511

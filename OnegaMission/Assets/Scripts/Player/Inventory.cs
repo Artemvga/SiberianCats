@@ -53,5 +53,16 @@ namespace Player
             _items.AddRange(items);
             OnInventoryChanged?.Invoke();
         }
+
+        public void ClearInventory()
+        {
+            foreach (var item in _items)
+            {
+                if (item != null && item.gameObject != null)
+                    Destroy(item.gameObject);
+            }
+            _items.Clear();
+            OnInventoryChanged?.Invoke();
+        }
     }
 }

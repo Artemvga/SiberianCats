@@ -1,18 +1,3 @@
-fileFormatVersion: 2
-guid: 153fa088d36da7048afb9f61d82db346
-MonoImporter:
-  externalObjects: {}
-  serializedVersion: 2
-  defaultReferences: []
-  executionOrder: 0
-  icon: {instanceID: 0}
-  userData: 
-  assetBundleName: 
-  assetBundleVariant: 
-AssetOrigin:
-  serializedVersion: 1
-  productId: 157187
-  packageName: Easy Performant Outline 2D | 3D (URP / HDRP and Built-in Renderer)
-  packageVersion: 3.5.7
-  assetPath: Assets/Plugins/Easy performant outline/Demo/Scripts/BubbleSpot.cs
-  uploadId: 710656
+version https://git-lfs.github.com/spec/v1
+oid sha256:759f2b53802045af74bacabe1dce805d4baee38186c198c5f81b967a06c42199
+size 503

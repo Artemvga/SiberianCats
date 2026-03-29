@@ -1,10 +1,3 @@
-﻿fileFormatVersion: 2
-guid: fe6feeee8c584dcf958ec49ceac0eb9c
-timeCreated: 1730046764
-AssetOrigin:
-  serializedVersion: 1
-  productId: 157187
-  packageName: Easy Performant Outline 2D | 3D (URP / HDRP and Built-in Renderer)
-  packageVersion: 3.5.7
-  assetPath: Assets/Plugins/Easy performant outline/Scripts/RendererUtility.cs
-  uploadId: 710656
+version https://git-lfs.github.com/spec/v1
+oid sha256:67e5c9c73ea26e60c6c20707d4a261a6fb3bd58bb574446712259becf317ec34
+size 347

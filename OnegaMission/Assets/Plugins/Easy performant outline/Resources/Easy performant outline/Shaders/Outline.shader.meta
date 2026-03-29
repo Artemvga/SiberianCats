@@ -1,16 +1,3 @@
-fileFormatVersion: 2
-guid: 371d61e0090ef2240a970d6c99a9d343
-ShaderImporter:
-  externalObjects: {}
-  defaultTextures: []
-  nonModifiableTextures: []
-  userData: 
-  assetBundleName: 
-  assetBundleVariant: 
-AssetOrigin:
-  serializedVersion: 1
-  productId: 157187
-  packageName: Easy Performant Outline 2D | 3D (URP / HDRP and Built-in Renderer)
-  packageVersion: 3.5.7
-  assetPath: Assets/Plugins/Easy performant outline/Resources/Easy performant outline/Shaders/Outline.shader
-  uploadId: 710656
+version https://git-lfs.github.com/spec/v1
+oid sha256:eae83ec2260b2bef2fe00ed814202799bb8b6d4aa1b0a4c9d419522e8d3f681d
+size 494

@@ -1,18 +1,3 @@
-fileFormatVersion: 2
-guid: 52a30cffbedc74949b39fa234f443134
-MonoImporter:
-  externalObjects: {}
-  serializedVersion: 2
-  defaultReferences: []
-  executionOrder: 0
-  icon: {instanceID: 0}
-  userData: 
-  assetBundleName: 
-  assetBundleVariant: 
-AssetOrigin:
-  serializedVersion: 1
-  productId: 157187
-  packageName: Easy Performant Outline 2D | 3D (URP / HDRP and Built-in Renderer)
-  packageVersion: 3.5.7
-  assetPath: Assets/Plugins/Easy performant outline/Scripts/Editor/OutlinerEditor.cs
-  uploadId: 710656
+version https://git-lfs.github.com/spec/v1
+oid sha256:150e29753c4742edec72ca55301c8e1fc69e231775f337d5195a8150262d2b87
+size 509

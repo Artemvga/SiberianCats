@@ -1,18 +1,3 @@
-fileFormatVersion: 2
-guid: 183354db352b12e4ab7bbc9a83d20723
-MonoImporter:
-  externalObjects: {}
-  serializedVersion: 2
-  defaultReferences: []
-  executionOrder: 0
-  icon: {instanceID: 0}
-  userData: 
-  assetBundleName: 
-  assetBundleVariant: 
-AssetOrigin:
-  serializedVersion: 1
-  productId: 157187
-  packageName: Easy Performant Outline 2D | 3D (URP / HDRP and Built-in Renderer)
-  packageVersion: 3.5.7
-  assetPath: Assets/Plugins/Easy performant outline/Scripts/OnPreRenderEventTransferer.cs
-  uploadId: 710656
+version https://git-lfs.github.com/spec/v1
+oid sha256:7d9a9fc49f0e2ccc984475949fcb5993d19489727649aab9122e977525613131
+size 514

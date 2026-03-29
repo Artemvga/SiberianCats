@@ -1,18 +1,3 @@
-fileFormatVersion: 2
-guid: f8ab645ef8375f84880fc3ed2fe26131
-MonoImporter:
-  externalObjects: {}
-  serializedVersion: 2
-  defaultReferences: []
-  executionOrder: 0
-  icon: {instanceID: 0}
-  userData: 
-  assetBundleName: 
-  assetBundleVariant: 
-AssetOrigin:
-  serializedVersion: 1
-  productId: 157187
-  packageName: Easy Performant Outline 2D | 3D (URP / HDRP and Built-in Renderer)
-  packageVersion: 3.5.7
-  assetPath: Assets/Plugins/Easy performant outline/Demo/Scripts/Chicken.cs
-  uploadId: 710656
+version https://git-lfs.github.com/spec/v1
+oid sha256:e1ce26d7150425da04e607589d64498283d7894a453f82194de78ab23ca9f8f2
+size 500

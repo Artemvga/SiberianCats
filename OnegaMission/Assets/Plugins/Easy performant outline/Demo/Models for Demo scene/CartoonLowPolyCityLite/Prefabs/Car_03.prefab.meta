@@ -1,14 +1,3 @@
-fileFormatVersion: 2
-guid: 6f306e6d232c52e4bb0436eb886a5d72
-PrefabImporter:
-  externalObjects: {}
-  userData: 
-  assetBundleName: 
-  assetBundleVariant: 
-AssetOrigin:
-  serializedVersion: 1
-  productId: 157187
-  packageName: Easy Performant Outline 2D | 3D (URP / HDRP and Built-in Renderer)
-  packageVersion: 3.5.7
-  assetPath: Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/CartoonLowPolyCityLite/Prefabs/Car_03.prefab
-  uploadId: 710656
+version https://git-lfs.github.com/spec/v1
+oid sha256:f95654be6ea259194d55cad3fb73f893c95cc241f87783e35403f0b235880bf1
+size 459

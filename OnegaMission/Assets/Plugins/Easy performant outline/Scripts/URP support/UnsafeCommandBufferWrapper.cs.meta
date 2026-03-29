@@ -1,10 +1,3 @@
-﻿fileFormatVersion: 2
-guid: 7e0d3a92813449e3b72fd30a942ec734
-timeCreated: 1729532729
-AssetOrigin:
-  serializedVersion: 1
-  productId: 157187
-  packageName: Easy Performant Outline 2D | 3D (URP / HDRP and Built-in Renderer)
-  packageVersion: 3.5.7
-  assetPath: Assets/Plugins/Easy performant outline/Scripts/URP support/UnsafeCommandBufferWrapper.cs
-  uploadId: 710656
+version https://git-lfs.github.com/spec/v1
+oid sha256:15476591cb2508f83fd47a5826ff6bf9ccda81f67318223907512737383081ea
+size 370

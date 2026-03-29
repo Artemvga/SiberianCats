@@ -1,16 +1,3 @@
-fileFormatVersion: 2
-guid: 213090e563021044c92d1c27258b93f0
-ShaderImporter:
-  externalObjects: {}
-  defaultTextures: []
-  nonModifiableTextures: []
-  userData: 
-  assetBundleName: 
-  assetBundleVariant: 
-AssetOrigin:
-  serializedVersion: 1
-  productId: 157187
-  packageName: Easy Performant Outline 2D | 3D (URP / HDRP and Built-in Renderer)
-  packageVersion: 3.5.7
-  assetPath: Assets/Plugins/Easy performant outline/Resources/Easy performant outline/Shaders/Fills/ColorFill.shader
-  uploadId: 710656
+version https://git-lfs.github.com/spec/v1
+oid sha256:05835a6662bb272c6d23255f77c6864e0fc16f49534cf2585f0477d767ef8104
+size 502

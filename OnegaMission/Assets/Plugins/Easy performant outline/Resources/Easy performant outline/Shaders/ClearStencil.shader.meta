@@ -1,16 +1,3 @@
-fileFormatVersion: 2
-guid: e9ff1b29280a58548b6525fbca989bc8
-ShaderImporter:
-  externalObjects: {}
-  defaultTextures: []
-  nonModifiableTextures: []
-  userData: 
-  assetBundleName: 
-  assetBundleVariant: 
-AssetOrigin:
-  serializedVersion: 1
-  productId: 157187
-  packageName: Easy Performant Outline 2D | 3D (URP / HDRP and Built-in Renderer)
-  packageVersion: 3.5.7
-  assetPath: Assets/Plugins/Easy performant outline/Resources/Easy performant outline/Shaders/ClearStencil.shader
-  uploadId: 710656
+version https://git-lfs.github.com/spec/v1
+oid sha256:18d876df0dc6356f37a7eb091496ac4acced02ee02145d01f284d6d9fa0b9ff1
+size 499

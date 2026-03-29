@@ -11,7 +11,7 @@ public class TabletUI : MonoBehaviour
 {
     [Header("UI References")]
     [SerializeField] private GameObject _tabletPanel;
-    [SerializeField] private TMP_Text _trashListText;
+    [SerializeField] private TMP_Text _trashCountText;       // теперь один текстовый элемент для количества
     [SerializeField] private TMP_Text _toolsListText;
     [SerializeField] private TMP_Text _inventoryStatusText;
 
@@ -22,18 +22,23 @@ public class TabletUI : MonoBehaviour
     private bool _isOpen = false;
     public static bool IsOpen { get; private set; }
 
+    public static TabletUI Instance { get; private set; }
+
     private void Awake()
     {
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+        Instance = this;
         _tabletPanel.SetActive(false);
         IsOpen = false;
     }
-    
+
     private void Update()
     {
-        if (_isOpen)
-        {
-            UpdateContent(); 
-        }
+        if (_isOpen) UpdateContent();
     }
 
     private void OnEnable()
@@ -62,9 +67,10 @@ public class TabletUI : MonoBehaviour
 
     public void ToggleTablet()
     {
-        if (!PlayerTools.Instance.HasTool(ToolType.Tablet))
+        if (!PlayerTools.Instance.HasTool(ToolType.Tablet) ||
+            ActiveTool.Instance.GetCurrentToolType() != ToolType.Tablet)
         {
-            Debug.Log("У вас нет планшета!");
+            Debug.Log("Планшет не экипирован или отсутствует в инвентаре");
             return;
         }
 
@@ -83,6 +89,15 @@ public class TabletUI : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Закрывает планшет, если он открыт.
+    /// </summary>
+    public void CloseIfOpen()
+    {
+        if (_isOpen)
+            ToggleTablet();
+    }
+
     private void OnInventoryChanged()
     {
         if (_isOpen) UpdateContent();
@@ -93,23 +108,13 @@ public class TabletUI : MonoBehaviour
         if (_isOpen) UpdateContent();
     }
 
-    // Если события всё равно не работают, раскомментируйте этот метод:
-    // private void Update()
-    // {
-    //     if (_isOpen) UpdateContent();
-    // }
-
     private void UpdateContent()
     {
-        _inventoryStatusText.text = $"Мусор: {Inventory.Instance.ItemsCount}/{Inventory.Instance.MaxSlots}";
+        // Отображаем количество мусора вместо списка
+        _trashCountText.text = $"{Inventory.Instance.ItemsCount} / {Inventory.Instance.MaxSlots}";
+        _inventoryStatusText.text = "Мусор в инвентаре";
 
-        StringBuilder trashSb = new StringBuilder();
-        foreach (var item in Inventory.Instance.GetItems())
-        {
-            trashSb.AppendLine($"• {item.ItemName} ({item.ItemType})");
-        }
-        _trashListText.text = trashSb.Length > 0 ? trashSb.ToString() : "Нет мусора";
-
+        // Список инструментов (оставляем как было)
         StringBuilder toolsSb = new StringBuilder();
         foreach (var tool in PlayerTools.Instance.GetAllTools())
         {

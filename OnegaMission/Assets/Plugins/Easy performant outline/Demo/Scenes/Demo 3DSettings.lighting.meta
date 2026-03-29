@@ -1,15 +1,3 @@
-fileFormatVersion: 2
-guid: e4e834a495ce6450fbe05f6e56ef0280
-NativeFormatImporter:
-  externalObjects: {}
-  mainObjectFileID: 4890085278179872738
-  userData: 
-  assetBundleName: 
-  assetBundleVariant: 
-AssetOrigin:
-  serializedVersion: 1
-  productId: 157187
-  packageName: Easy Performant Outline 2D | 3D (URP / HDRP and Built-in Renderer)
-  packageVersion: 3.5.7
-  assetPath: Assets/Plugins/Easy performant outline/Demo/Scenes/Demo 3DSettings.lighting
-  uploadId: 710656
+version https://git-lfs.github.com/spec/v1
+oid sha256:eb3c3ee59814c104d3c74048c711443a84833e4359dbca497ffc86a4a54f142e
+size 470

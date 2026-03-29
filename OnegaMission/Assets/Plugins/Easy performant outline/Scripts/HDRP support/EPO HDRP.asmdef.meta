@@ -1,14 +1,3 @@
-fileFormatVersion: 2
-guid: 7d134e3a5ae4c494c9f09ba876e370b1
-AssemblyDefinitionImporter:
-  externalObjects: {}
-  userData: 
-  assetBundleName: 
-  assetBundleVariant: 
-AssetOrigin:
-  serializedVersion: 1
-  productId: 157187
-  packageName: Easy Performant Outline 2D | 3D (URP / HDRP and Built-in Renderer)
-  packageVersion: 3.5.7
-  assetPath: Assets/Plugins/Easy performant outline/Scripts/HDRP support/EPO HDRP.asmdef
-  uploadId: 710656
+version https://git-lfs.github.com/spec/v1
+oid sha256:08df61c2cfc7d2c3ccd8ffcce64017010b7a1a4131679acfc66a5d46c3cabd59
+size 436

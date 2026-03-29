@@ -1,18 +1,3 @@
-fileFormatVersion: 2
-guid: 3fe91dc294731a9428c0941ea7579110
-MonoImporter:
-  externalObjects: {}
-  serializedVersion: 2
-  defaultReferences: []
-  executionOrder: 0
-  icon: {fileID: 2800000, guid: 3ae1a5450021a9440b4774e3a1961ef4, type: 3}
-  userData: 
-  assetBundleName: 
-  assetBundleVariant: 
-AssetOrigin:
-  serializedVersion: 1
-  productId: 157187
-  packageName: Easy Performant Outline 2D | 3D (URP / HDRP and Built-in Renderer)
-  packageVersion: 3.5.7
-  assetPath: Assets/Plugins/Easy performant outline/Scripts/Outlinable.cs
-  uploadId: 710656
+version https://git-lfs.github.com/spec/v1
+oid sha256:5b296e2c54d4a07e414597a943c3bc6053a187558b82f886bcbcd553bbea3c8e
+size 549

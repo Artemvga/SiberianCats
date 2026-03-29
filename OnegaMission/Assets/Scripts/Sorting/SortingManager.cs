@@ -4,35 +4,30 @@ using Player;
 using UnityEngine;
 using UnityEngine.Events;
 
-/// <summary>
-/// Менеджер процесса сортировки.
-/// Забирает предметы из инвентаря, спавнит на столе,
-/// обрабатывает клики по контейнерам, начисляет очки.
-/// </summary>
 public class SortingManager : MonoBehaviour
 {
     public static SortingManager Instance { get; private set; }
 
     [Header("References")]
-    [SerializeField] private Transform _spawnPoint;          // точка появления предмета на столе
-    [SerializeField] private Camera _sortingCamera;          // камера для лучей (если пусто – Camera.main)
-    [SerializeField] private LayerMask _binLayer;            // слой контейнеров
+    [SerializeField] private Transform _spawnPoint;
+    [SerializeField] private Camera _sortingCamera;
+    [SerializeField] private LayerMask _binLayer;
 
     [Header("Score Settings")]
     [SerializeField] private int _pointsPerCorrect = 10;
     [SerializeField] private int _pointsPerWrong = -5;
 
     [Header("Events")]
-    public UnityEvent<int> OnScoreChanged;       // локальный счёт сессии
-    public UnityEvent<int> OnItemsLeftChanged;   // оставшиеся предметы
-    public UnityEvent OnCorrectSort;             // правильная сортировка
-    public UnityEvent OnWrongSort;               // неправильная
-    public UnityEvent OnSortingStarted;          // старт
-    public UnityEvent OnSortingEnded;            // конец
+    public UnityEvent<int> OnScoreChanged;
+    public UnityEvent<int> OnItemsLeftChanged;
+    public UnityEvent OnCorrectSort;
+    public UnityEvent OnWrongSort;
+    public UnityEvent OnSortingStarted;
+    public UnityEvent OnSortingEnded;
 
-    private int _currentScore;                       // счёт текущей сессии
-    private List<InteractableBase> _remainingItems;  // предметы, ожидающие сортировки
-    private InteractableBase _currentItem;           // текущий предмет на столе
+    private int _currentScore;
+    private List<InteractableBase> _remainingItems;
+    private InteractableBase _currentItem;
     private SortingTable _currentTable;
     private bool _isSortingActive = false;
 
@@ -62,7 +57,9 @@ public class SortingManager : MonoBehaviour
         _isSortingActive = true;
         OnScoreChanged?.Invoke(_currentScore);
 
+        // Забираем ВСЕ предметы из инвентаря (включая деактивированные)
         _remainingItems = Inventory.Instance.TakeAllItems();
+        Debug.Log($"Sorting started, items in inventory: {_remainingItems.Count}");
         OnItemsLeftChanged?.Invoke(_remainingItems.Count);
         OnSortingStarted?.Invoke();
 
@@ -73,6 +70,7 @@ public class SortingManager : MonoBehaviour
     {
         _isSortingActive = false;
 
+        // Возвращаем текущий предмет, если он есть
         if (_currentItem != null)
         {
             _currentItem.gameObject.SetActive(false);
@@ -80,8 +78,12 @@ public class SortingManager : MonoBehaviour
             _currentItem = null;
         }
 
+        // Возвращаем все оставшиеся предметы в инвентарь
         if (_remainingItems != null && _remainingItems.Count > 0)
+        {
             Inventory.Instance.AddItems(_remainingItems);
+            Debug.Log($"Returned {_remainingItems.Count} items to inventory");
+        }
 
         _remainingItems = null;
         OnSortingEnded?.Invoke();
@@ -91,6 +93,7 @@ public class SortingManager : MonoBehaviour
     {
         if (_remainingItems == null || _remainingItems.Count == 0)
         {
+            Debug.Log("No items left, stopping sorting");
             _currentTable.StopSorting();
             return;
         }
@@ -98,6 +101,15 @@ public class SortingManager : MonoBehaviour
         _currentItem = _remainingItems[0];
         _remainingItems.RemoveAt(0);
 
+        // Проверяем, что предмет ещё существует
+        if (_currentItem == null || _currentItem.gameObject == null)
+        {
+            Debug.LogWarning("Item is null, skipping");
+            SpawnNextItem();
+            return;
+        }
+
+        // Активируем и размещаем предмет
         _currentItem.gameObject.SetActive(true);
         _currentItem.transform.position = _spawnPoint.position;
         _currentItem.transform.rotation = _spawnPoint.rotation;
@@ -110,6 +122,7 @@ public class SortingManager : MonoBehaviour
         if (rb != null) rb.isKinematic = true;
 
         OnItemsLeftChanged?.Invoke(_remainingItems.Count);
+        Debug.Log($"Spawned item: {_currentItem.ItemName}, remaining: {_remainingItems.Count}");
     }
 
     public void CheckSort(ItemTypeSO binType)
@@ -126,6 +139,7 @@ public class SortingManager : MonoBehaviour
             GameManager.Instance?.AddScore(_pointsPerCorrect);
             OnCorrectSort?.Invoke();
 
+            // Уничтожаем предмет, он больше не нужен
             Destroy(_currentItem.gameObject);
             _currentItem = null;
             SpawnNextItem();

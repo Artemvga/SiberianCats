@@ -1,18 +1,3 @@
-fileFormatVersion: 2
-guid: b58e2aece6703fe4eafcb90a0d6072ef
-MonoImporter:
-  externalObjects: {}
-  serializedVersion: 2
-  defaultReferences: []
-  executionOrder: 0
-  icon: {instanceID: 0}
-  userData: 
-  assetBundleName: 
-  assetBundleVariant: 
-AssetOrigin:
-  serializedVersion: 1
-  productId: 157187
-  packageName: Easy Performant Outline 2D | 3D (URP / HDRP and Built-in Renderer)
-  packageVersion: 3.5.7
-  assetPath: Assets/Plugins/Easy performant outline/Scripts/Editor/EPOSetuper.cs
-  uploadId: 710656
+version https://git-lfs.github.com/spec/v1
+oid sha256:573e7d95056ffd6607c830eeffaa39d4a8690e0207b727c26f725b4f8bae902b
+size 505
