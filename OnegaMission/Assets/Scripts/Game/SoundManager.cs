@@ -4,6 +4,16 @@ using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.Events;
 
+// -----------------------------------------------------------------------------
+// Назначение файла: SoundManager.cs
+// Путь: Assets/Scripts/Game/SoundManager.cs
+// Описание: Содержит игровую логику, связанную с данным компонентом.
+// Примечание: Комментарии добавлены для ускорения поддержки и онбординга.
+// -----------------------------------------------------------------------------
+
+/// <summary>
+/// Реализует компонент `SoundManager` и инкапсулирует связанную с ним игровую логику.
+/// </summary>
 public class SoundManager : MonoBehaviour
 {
     public static SoundManager Instance { get; private set; }
@@ -68,6 +78,9 @@ public class SoundManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Инициализирует объект при создании компонента Unity.
+    /// </summary>
     private void Awake()
     {
         if (Instance != null && Instance != this)
@@ -109,6 +122,9 @@ public class SoundManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Выполняет операцию `ApplyVolumes` в рамках обязанностей текущего компонента.
+    /// </summary>
     private void ApplyVolumes()
     {
         float master = _masterVolume;
@@ -129,6 +145,9 @@ public class SoundManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Выполняет операцию `SetMixerVolume` в рамках обязанностей текущего компонента.
+    /// </summary>
     private void SetMixerVolume(AudioMixerGroup group, float value)
     {
         if (group != null)
@@ -137,6 +156,9 @@ public class SoundManager : MonoBehaviour
 
     #region Music
 
+    /// <summary>
+    /// Выполняет операцию `PlayBackgroundMusic` в рамках обязанностей текущего компонента.
+    /// </summary>
     public void PlayBackgroundMusic(AudioClip clip)
     {
         if (_bgMusicSource.clip == clip && _bgMusicSource.isPlaying) return;
@@ -145,11 +167,17 @@ public class SoundManager : MonoBehaviour
         _crossfadeRoutine = StartCoroutine(CrossfadeMusic(_bgMusicSource, clip));
     }
 
+    /// <summary>
+    /// Выполняет операцию `StopBackgroundMusic` в рамках обязанностей текущего компонента.
+    /// </summary>
     public void StopBackgroundMusic(float fadeOut = 0.5f)
     {
         StartCoroutine(FadeOutAndStop(_bgMusicSource, fadeOut));
     }
 
+    /// <summary>
+    /// Выполняет операцию `PlayKeyMusic` в рамках обязанностей текущего компонента.
+    /// </summary>
     public void PlayKeyMusic(AudioClip clip)
     {
         if (_keyMusicSource.clip == clip && _keyMusicSource.isPlaying) return;
@@ -157,11 +185,17 @@ public class SoundManager : MonoBehaviour
         StartCoroutine(CrossfadeMusic(_keyMusicSource, clip, true));
     }
 
+    /// <summary>
+    /// Выполняет операцию `StopKeyMusic` в рамках обязанностей текущего компонента.
+    /// </summary>
     public void StopKeyMusic(float fadeOut = 0.5f)
     {
         StartCoroutine(FadeOutAndStop(_keyMusicSource, fadeOut, true));
     }
 
+    /// <summary>
+    /// Выполняет операцию `CrossfadeMusic` в рамках обязанностей текущего компонента.
+    /// </summary>
     private IEnumerator CrossfadeMusic(AudioSource source, AudioClip newClip, bool isKeyMusic = false)
     {
         float startVolume = source.volume;
@@ -186,6 +220,9 @@ public class SoundManager : MonoBehaviour
         _crossfadeRoutine = null;
     }
 
+    /// <summary>
+    /// Выполняет операцию `FadeOutAndStop` в рамках обязанностей текущего компонента.
+    /// </summary>
     private IEnumerator FadeOutAndStop(AudioSource source, float duration, bool restoreBg = false)
     {
         float startVolume = source.volume;
@@ -207,6 +244,9 @@ public class SoundManager : MonoBehaviour
 
     #region Sound Effects
 
+    /// <summary>
+    /// Выполняет операцию `PlaySfx` в рамках обязанностей текущего компонента.
+    /// </summary>
     public void PlaySfx(AudioClip clip, Vector3? position = null, float volume = 1f)
     {
         if (clip == null) return;
@@ -225,6 +265,9 @@ public class SoundManager : MonoBehaviour
         StartCoroutine(ReturnToPoolAfterPlay(source));
     }
 
+    /// <summary>
+    /// Выполняет операцию `GetPooledSfxSource` в рамках обязанностей текущего компонента.
+    /// </summary>
     private AudioSource GetPooledSfxSource()
     {
         if (_sfxPool.Count > 0)
@@ -238,6 +281,9 @@ public class SoundManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Выполняет операцию `ReturnToPoolAfterPlay` в рамках обязанностей текущего компонента.
+    /// </summary>
     private IEnumerator ReturnToPoolAfterPlay(AudioSource source)
     {
         yield return new WaitForSeconds(source.clip.length + 0.1f);
@@ -247,6 +293,9 @@ public class SoundManager : MonoBehaviour
         _sfxPool.Enqueue(source);
     }
 
+    /// <summary>
+    /// Выполняет операцию `PlayOneShot` в рамках обязанностей текущего компонента.
+    /// </summary>
     public void PlayOneShot(AudioClip clip, float volumeScale = 1f)
     {
         _sfxSource.PlayOneShot(clip, volumeScale * _sfxVolume * _masterVolume);
@@ -256,6 +305,9 @@ public class SoundManager : MonoBehaviour
 
     #region Utilities
 
+    /// <summary>
+    /// Выполняет операцию `StopAll` в рамках обязанностей текущего компонента.
+    /// </summary>
     public void StopAll()
     {
         _bgMusicSource.Stop();

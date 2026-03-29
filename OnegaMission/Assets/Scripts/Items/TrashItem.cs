@@ -1,8 +1,18 @@
 using Player;
 using UnityEngine;
 
+// -----------------------------------------------------------------------------
+// Назначение файла: TrashItem.cs
+// Путь: Assets/Scripts/Items/TrashItem.cs
+// Описание: Содержит игровую логику, связанную с данным компонентом.
+// Примечание: Комментарии добавлены для ускорения поддержки и онбординга.
+// -----------------------------------------------------------------------------
+
 namespace Items
 {
+    /// <summary>
+    /// Реализует компонент `TrashItem` и инкапсулирует связанную с ним игровую логику.
+    /// </summary>
     public class TrashItem : InteractableBase
     {
         private string _id;
@@ -10,11 +20,17 @@ namespace Items
 
         public override bool ShouldShowRequirement => false;
 
+        /// <summary>
+        /// Выполняет операцию `CanInteract` в рамках обязанностей текущего компонента.
+        /// </summary>
         public override bool CanInteract(PlayerTools tools)
         {
             return ActiveTool.Instance.GetCurrentToolType() == ToolType.Tablet && TabletUI.IsOpen;
         }
 
+        /// <summary>
+        /// Выполняет операцию `Interact` в рамках обязанностей текущего компонента.
+        /// </summary>
         public override void Interact()
         {
             if (!CanInteract(PlayerTools.Instance))
@@ -44,6 +60,9 @@ namespace Items
             }
         }
 
+        /// <summary>
+        /// Выполняет операцию `GetInteractionMessage` в рамках обязанностей текущего компонента.
+        /// </summary>
         public override string GetInteractionMessage()
         {
             if (ActiveTool.Instance.GetCurrentToolType() == ToolType.Tablet && TabletUI.IsOpen)
@@ -53,6 +72,9 @@ namespace Items
             return "Возьмите планшет в руки (1) и откройте его (I)";
         }
 
+        /// <summary>
+        /// Выполняет операцию `SetData` в рамках обязанностей текущего компонента.
+        /// </summary>
         public void SetData(string id, string newName, ItemTypeSO newType, string newDescription, string newLore)
         {
             _id = id;

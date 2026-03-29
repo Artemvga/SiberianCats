@@ -3,6 +3,13 @@ using UnityEngine.InputSystem;
 using InputSystemProject;
 using Unity.Cinemachine;
 
+// -----------------------------------------------------------------------------
+// Назначение файла: PlayerMovement.cs
+// Путь: Assets/Scripts/Player/PlayerMovement.cs
+// Описание: Содержит игровую логику, связанную с данным компонентом.
+// Примечание: Комментарии добавлены для ускорения поддержки и онбординга.
+// -----------------------------------------------------------------------------
+
 namespace Player
 {
     /// <summary>
@@ -22,6 +29,9 @@ namespace Player
         private Vector2 _moveInput;
         private float _verticalVelocity;
 
+        /// <summary>
+        /// Срабатывает при активации компонента.
+        /// </summary>
         private void OnEnable()
         {
             var playerMap = InputManager.Instance.actions.Player;
@@ -31,6 +41,9 @@ namespace Player
             playerMap.Sprint.canceled += OnSprintCanceled;
         }
 
+        /// <summary>
+        /// Срабатывает при деактивации компонента.
+        /// </summary>
         private void OnDisable()
         {
             if (InputManager.Instance == null) return;
@@ -46,12 +59,18 @@ namespace Player
         private void OnSprintPerformed(InputAction.CallbackContext context) => _currentSpeed = _sprintSpeed;
         private void OnSprintCanceled(InputAction.CallbackContext context) => _currentSpeed = _walkSpeed;
 
+        /// <summary>
+        /// Запускает начальную настройку после инициализации сцены.
+        /// </summary>
         private void Start()
         {
             _currentSpeed = _walkSpeed;
             Cursor.lockState = CursorLockMode.Locked;
         }
 
+        /// <summary>
+        /// Выполняет логику, которая должна обновляться каждый кадр.
+        /// </summary>
         private void Update()
         {
             Vector3 move = (GetForward() * _moveInput.y + GetRight() * _moveInput.x) * _currentSpeed;
@@ -65,6 +84,9 @@ namespace Player
             _characterController.Move(velocity * Time.deltaTime);
         }
 
+        /// <summary>
+        /// Выполняет операцию `GetForward` в рамках обязанностей текущего компонента.
+        /// </summary>
         private Vector3 GetForward()
         {
             Vector3 forward = _playerCamera.transform.forward;
@@ -72,6 +94,9 @@ namespace Player
             return forward.normalized;
         }
 
+        /// <summary>
+        /// Выполняет операцию `GetRight` в рамках обязанностей текущего компонента.
+        /// </summary>
         private Vector3 GetRight()
         {
             Vector3 right = _playerCamera.transform.right;

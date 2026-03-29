@@ -3,6 +3,16 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
+// -----------------------------------------------------------------------------
+// Назначение файла: SceneLoader.cs
+// Путь: Assets/Scripts/Game/SceneLoader.cs
+// Описание: Содержит игровую логику, связанную с данным компонентом.
+// Примечание: Комментарии добавлены для ускорения поддержки и онбординга.
+// -----------------------------------------------------------------------------
+
+/// <summary>
+/// Реализует компонент `SceneLoader` и инкапсулирует связанную с ним игровую логику.
+/// </summary>
 public class SceneLoader : MonoBehaviour
 {
     public static SceneLoader Instance { get; private set; }
@@ -12,6 +22,9 @@ public class SceneLoader : MonoBehaviour
     [SerializeField] private Slider _progressBar;
     [SerializeField] private Text _progressText;
 
+    /// <summary>
+    /// Инициализирует объект при создании компонента Unity.
+    /// </summary>
     private void Awake()
     {
         if (Instance != null && Instance != this)
@@ -22,11 +35,17 @@ public class SceneLoader : MonoBehaviour
         _loadingPanel.SetActive(false);
     }
 
+    /// <summary>
+    /// Выполняет операцию `LoadScene` в рамках обязанностей текущего компонента.
+    /// </summary>
     public void LoadScene(string sceneName)
     {
         StartCoroutine(LoadSceneAsync(sceneName));
     }
 
+    /// <summary>
+    /// Выполняет операцию `LoadSceneAsync` в рамках обязанностей текущего компонента.
+    /// </summary>
     private IEnumerator LoadSceneAsync(string sceneName)
     {
         _loadingPanel.SetActive(true);

@@ -8,6 +8,16 @@ using UnityEngine.Events;
 using UnityEngine.UI;
 using TMPro;
 
+// -----------------------------------------------------------------------------
+// Назначение файла: TrapObject.cs
+// Путь: Assets/Scripts/Items/TrapObject.cs
+// Описание: Содержит игровую логику, связанную с данным компонентом.
+// Примечание: Комментарии добавлены для ускорения поддержки и онбординга.
+// -----------------------------------------------------------------------------
+
+/// <summary>
+/// Реализует компонент `TrapObject` и инкапсулирует связанную с ним игровую логику.
+/// </summary>
 public class TrapObject : MonoBehaviour, IInteractable
 {
     [Header("Requirements")]
@@ -64,23 +74,35 @@ public class TrapObject : MonoBehaviour, IInteractable
     public string Lore => _lore;
     public bool ShouldShowRequirement => true;
 
+    /// <summary>
+    /// Выполняет операцию `OnFocus` в рамках обязанностей текущего компонента.
+    /// </summary>
     public void OnFocus()
     {
         var outlinable = GetComponent<EPOOutline.Outlinable>();
         if (outlinable != null) outlinable.enabled = true;
     }
 
+    /// <summary>
+    /// Выполняет операцию `OnDefocus` в рамках обязанностей текущего компонента.
+    /// </summary>
     public void OnDefocus()
     {
         var outlinable = GetComponent<EPOOutline.Outlinable>();
         if (outlinable != null) outlinable.enabled = false;
     }
 
+    /// <summary>
+    /// Выполняет операцию `CanInteract` в рамках обязанностей текущего компонента.
+    /// </summary>
     public bool CanInteract(PlayerTools tools)
     {
         return _isInteractable && ActiveTool.Instance.GetCurrentToolType() == ToolType.Scissors;
     }
 
+    /// <summary>
+    /// Выполняет операцию `Interact` в рамках обязанностей текущего компонента.
+    /// </summary>
     public void Interact()
     {
         if (!_isInteractable) return;
@@ -88,6 +110,9 @@ public class TrapObject : MonoBehaviour, IInteractable
         StartMinigame();
     }
 
+    /// <summary>
+    /// Выполняет операцию `GetInteractionMessage` в рамках обязанностей текущего компонента.
+    /// </summary>
     public string GetInteractionMessage()
     {
         if (ActiveTool.Instance.GetCurrentToolType() == ToolType.Scissors)
@@ -96,6 +121,9 @@ public class TrapObject : MonoBehaviour, IInteractable
             return "Возьмите ножницы в руки (2)";
     }
 
+    /// <summary>
+    /// Выполняет операцию `StartMinigame` в рамках обязанностей текущего компонента.
+    /// </summary>
     private void StartMinigame()
     {
         // Снимаем фокус с объекта, чтобы UI описания исчез
@@ -131,6 +159,9 @@ public class TrapObject : MonoBehaviour, IInteractable
         OnMinigameStart?.Invoke();
     }
 
+    /// <summary>
+    /// Выполняет операцию `OnButtonClick` в рамках обязанностей текущего компонента.
+    /// </summary>
     private void OnButtonClick(Button button)
     {
         if (!_isMinigameActive) return;
@@ -148,6 +179,9 @@ public class TrapObject : MonoBehaviour, IInteractable
         }
     }
 
+    /// <summary>
+    /// Выполняет операцию `UpdateMotivationText` в рамках обязанностей текущего компонента.
+    /// </summary>
     private void UpdateMotivationText()
     {
         if (_motivationText == null) return;
@@ -172,6 +206,9 @@ public class TrapObject : MonoBehaviour, IInteractable
         }
     }
 
+    /// <summary>
+    /// Выполняет операцию `CompleteMinigame` в рамках обязанностей текущего компонента.
+    /// </summary>
     private void CompleteMinigame()
     {
         _isMinigameActive = false;
@@ -220,6 +257,9 @@ public class TrapObject : MonoBehaviour, IInteractable
         });
     }
 
+    /// <summary>
+    /// Выполняет операцию `AddTrashToInventory` в рамках обязанностей текущего компонента.
+    /// </summary>
     private void AddTrashToInventory()
     {
         TrashItem trash = null;

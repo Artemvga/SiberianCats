@@ -4,8 +4,18 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Events;
 
+// -----------------------------------------------------------------------------
+// Назначение файла: PlayerInteraction.cs
+// Путь: Assets/Scripts/Player/PlayerInteraction.cs
+// Описание: Содержит игровую логику, связанную с данным компонентом.
+// Примечание: Комментарии добавлены для ускорения поддержки и онбординга.
+// -----------------------------------------------------------------------------
+
 namespace Player
 {
+    /// <summary>
+    /// Реализует компонент `PlayerInteraction` и инкапсулирует связанную с ним игровую логику.
+    /// </summary>
     public class PlayerInteraction : MonoBehaviour
     {
         public static PlayerInteraction Instance { get; private set; }
@@ -24,6 +34,9 @@ namespace Player
         private IInteractable _currentInteractable;
         private float _lastHitTime;
 
+        /// <summary>
+        /// Инициализирует объект при создании компонента Unity.
+        /// </summary>
         private void Awake()
         {
             // Синглтон
@@ -35,11 +48,17 @@ namespace Player
             Instance = this;
         }
 
+        /// <summary>
+        /// Освобождает ресурсы перед уничтожением объекта.
+        /// </summary>
         private void OnDestroy()
         {
             if (Instance == this) Instance = null;
         }
 
+        /// <summary>
+        /// Выполняет логику, которая должна обновляться каждый кадр.
+        /// </summary>
         private void Update()
         {
             // Не проверяем интерактивные объекты, если открыт фоторежим или записка
@@ -48,6 +67,9 @@ namespace Player
             CheckInteractable();
         }
 
+        /// <summary>
+        /// Выполняет операцию `CheckInteractable` в рамках обязанностей текущего компонента.
+        /// </summary>
         private void CheckInteractable()
         {
             Ray ray = _camera.ScreenPointToRay(new Vector3(Screen.width / 2f, Screen.height / 2f, 0));
@@ -83,6 +105,9 @@ namespace Player
             }
         }
 
+        /// <summary>
+        /// Выполняет операцию `SetCurrentInteractable` в рамках обязанностей текущего компонента.
+        /// </summary>
         private void SetCurrentInteractable(IInteractable newInteractable)
         {
             if (_currentInteractable == newInteractable) return;
@@ -109,6 +134,9 @@ namespace Player
                 _interactionUI.ClearContent();
         }
 
+        /// <summary>
+        /// Выполняет операцию `OnInteractPerformed` в рамках обязанностей текущего компонента.
+        /// </summary>
         private void OnInteractPerformed(InputAction.CallbackContext context)
         {
             if (_currentInteractable != null)
@@ -119,11 +147,17 @@ namespace Player
             }
         }
 
+        /// <summary>
+        /// Срабатывает при активации компонента.
+        /// </summary>
         private void OnEnable()
         {
             InputManager.Instance.actions.Player.Interact.performed += OnInteractPerformed;
         }
 
+        /// <summary>
+        /// Срабатывает при деактивации компонента.
+        /// </summary>
         private void OnDisable()
         {
             InputManager.Instance.actions.Player.Interact.performed -= OnInteractPerformed;

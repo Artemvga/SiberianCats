@@ -3,8 +3,18 @@ using System.Collections.Generic;
 using Items;
 using UnityEngine;
 
+// -----------------------------------------------------------------------------
+// Назначение файла: Inventory.cs
+// Путь: Assets/Scripts/Player/Inventory.cs
+// Описание: Содержит игровую логику, связанную с данным компонентом.
+// Примечание: Комментарии добавлены для ускорения поддержки и онбординга.
+// -----------------------------------------------------------------------------
+
 namespace Player
 {
+    /// <summary>
+    /// Реализует компонент `Inventory` и инкапсулирует связанную с ним игровую логику.
+    /// </summary>
     public class Inventory : MonoBehaviour
     {
         public static Inventory Instance { get; private set; }
@@ -18,6 +28,9 @@ namespace Player
 
         public event Action OnInventoryChanged;
 
+        /// <summary>
+        /// Инициализирует объект при создании компонента Unity.
+        /// </summary>
         private void Awake()
         {
             if (Instance != null && Instance != this)
@@ -29,6 +42,9 @@ namespace Player
             DontDestroyOnLoad(gameObject);
         }
 
+        /// <summary>
+        /// Выполняет операцию `AddItem` в рамках обязанностей текущего компонента.
+        /// </summary>
         public bool AddItem(InteractableBase item)
         {
             if (IsFull) return false;
@@ -40,6 +56,9 @@ namespace Player
 
         public List<InteractableBase> GetItems() => new List<InteractableBase>(_items);
 
+        /// <summary>
+        /// Выполняет операцию `TakeAllItems` в рамках обязанностей текущего компонента.
+        /// </summary>
         public List<InteractableBase> TakeAllItems()
         {
             var list = new List<InteractableBase>(_items);
@@ -48,12 +67,18 @@ namespace Player
             return list;
         }
 
+        /// <summary>
+        /// Выполняет операцию `AddItems` в рамках обязанностей текущего компонента.
+        /// </summary>
         public void AddItems(List<InteractableBase> items)
         {
             _items.AddRange(items);
             OnInventoryChanged?.Invoke();
         }
 
+        /// <summary>
+        /// Выполняет операцию `ClearInventory` в рамках обязанностей текущего компонента.
+        /// </summary>
         public void ClearInventory()
         {
             foreach (var item in _items)

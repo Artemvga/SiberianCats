@@ -1,8 +1,18 @@
 using Player;
 using UnityEngine;
 
+// -----------------------------------------------------------------------------
+// Назначение файла: ToolItem.cs
+// Путь: Assets/Scripts/Items/ToolItem.cs
+// Описание: Содержит игровую логику, связанную с данным компонентом.
+// Примечание: Комментарии добавлены для ускорения поддержки и онбординга.
+// -----------------------------------------------------------------------------
+
 namespace Items
 {
+    /// <summary>
+    /// Реализует компонент `ToolItem` и инкапсулирует связанную с ним игровую логику.
+    /// </summary>
     public class ToolItem : InteractableBase
     {
         [SerializeField] private ToolType _toolType;
@@ -11,6 +21,9 @@ namespace Items
         public override bool ShouldShowRequirement => false;
         public override bool CanInteract(PlayerTools tools) => true;
 
+        /// <summary>
+        /// Выполняет операцию `Interact` в рамках обязанностей текущего компонента.
+        /// </summary>
         public override void Interact()
         {
             if (PlayerTools.Instance != null && PlayerTools.Instance.AddTool(this))
@@ -35,6 +48,9 @@ namespace Items
             }
         }
 
+        /// <summary>
+        /// Выполняет операцию `GetInteractionMessage` в рамках обязанностей текущего компонента.
+        /// </summary>
         public override string GetInteractionMessage()
         {
             return "Нажмите E, чтобы взять инструмент";

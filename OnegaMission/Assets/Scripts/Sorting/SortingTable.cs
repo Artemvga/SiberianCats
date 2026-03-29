@@ -7,6 +7,16 @@ using Unity.Cinemachine;
 using UnityEngine.Events;
 using System.Collections.Generic;
 
+// -----------------------------------------------------------------------------
+// Назначение файла: SortingTable.cs
+// Путь: Assets/Scripts/Sorting/SortingTable.cs
+// Описание: Содержит игровую логику, связанную с данным компонентом.
+// Примечание: Комментарии добавлены для ускорения поддержки и онбординга.
+// -----------------------------------------------------------------------------
+
+/// <summary>
+/// Реализует компонент `SortingTable` и инкапсулирует связанную с ним игровую логику.
+/// </summary>
 public class SortingTable : MonoBehaviour
 {
     [Header("References")]
@@ -35,6 +45,9 @@ public class SortingTable : MonoBehaviour
     private List<Renderer> _toolRenderers = new List<Renderer>();
     private List<bool> _toolRendererStates = new List<bool>();
 
+    /// <summary>
+    /// Запускает начальную настройку после инициализации сцены.
+    /// </summary>
     private void Start()
     {
         if (_mainCamera == null) _mainCamera = Camera.main;
@@ -42,6 +55,9 @@ public class SortingTable : MonoBehaviour
         if (_exitPrompt != null) _exitPrompt.SetActive(false);
     }
 
+    /// <summary>
+    /// Срабатывает при активации компонента.
+    /// </summary>
     private void OnEnable()
     {
         if (InputManager.Instance != null)
@@ -51,6 +67,9 @@ public class SortingTable : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Срабатывает при деактивации компонента.
+    /// </summary>
     private void OnDisable()
     {
         if (InputManager.Instance != null)
@@ -60,6 +79,9 @@ public class SortingTable : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Выполняет операцию `OnTriggerEnter` в рамках обязанностей текущего компонента.
+    /// </summary>
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
@@ -69,6 +91,9 @@ public class SortingTable : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Выполняет операцию `OnTriggerExit` в рамках обязанностей текущего компонента.
+    /// </summary>
     private void OnTriggerExit(Collider other)
     {
         if (other.CompareTag("Player"))
@@ -79,11 +104,17 @@ public class SortingTable : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Выполняет операцию `OnInteractPerformed` в рамках обязанностей текущего компонента.
+    /// </summary>
     private void OnInteractPerformed(InputAction.CallbackContext context)
     {
         TryStartSorting();
     }
 
+    /// <summary>
+    /// Выполняет операцию `TryStartSorting` в рамках обязанностей текущего компонента.
+    /// </summary>
     public void TryStartSorting()
     {
         if (!_isPlayerInRange || _isSortingActive) return;
@@ -96,6 +127,9 @@ public class SortingTable : MonoBehaviour
         StartSorting();
     }
 
+    /// <summary>
+    /// Выполняет операцию `StartSorting` в рамках обязанностей текущего компонента.
+    /// </summary>
     private void StartSorting()
     {
         _isSortingActive = true;
@@ -140,6 +174,9 @@ public class SortingTable : MonoBehaviour
         _sortingManager.StartSorting(this);
     }
 
+    /// <summary>
+    /// Выполняет операцию `StopSorting` в рамках обязанностей текущего компонента.
+    /// </summary>
     public void StopSorting()
     {
         if (!_isSortingActive) return;
@@ -173,6 +210,9 @@ public class SortingTable : MonoBehaviour
         _sortingManager.StopSorting();
     }
 
+    /// <summary>
+    /// Выполняет операцию `OnCancelPerformed` в рамках обязанностей текущего компонента.
+    /// </summary>
     private void OnCancelPerformed(InputAction.CallbackContext context)
     {
         if (_isSortingActive) StopSorting();
@@ -180,6 +220,9 @@ public class SortingTable : MonoBehaviour
 
     #region Visibility Helpers
 
+    /// <summary>
+    /// Выполняет операцию `SaveAndDisablePlayerRenderers` в рамках обязанностей текущего компонента.
+    /// </summary>
     private void SaveAndDisablePlayerRenderers()
     {
         if (_playerMovement == null) return;
@@ -200,6 +243,9 @@ public class SortingTable : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Выполняет операцию `RestorePlayerRenderers` в рамках обязанностей текущего компонента.
+    /// </summary>
     private void RestorePlayerRenderers()
     {
         for (int i = 0; i < _playerRenderers.Count; i++)
@@ -211,6 +257,9 @@ public class SortingTable : MonoBehaviour
         _playerRendererStates.Clear();
     }
 
+    /// <summary>
+    /// Выполняет операцию `SaveAndDisableToolModel` в рамках обязанностей текущего компонента.
+    /// </summary>
     private void SaveAndDisableToolModel()
     {
         if (ActiveTool.Instance == null) return;
@@ -230,6 +279,9 @@ public class SortingTable : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Выполняет операцию `RestoreToolModel` в рамках обязанностей текущего компонента.
+    /// </summary>
     private void RestoreToolModel()
     {
         for (int i = 0; i < _toolRenderers.Count; i++)

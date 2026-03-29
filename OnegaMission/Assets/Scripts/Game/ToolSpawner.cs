@@ -3,6 +3,16 @@ using Items;
 using Player;
 using UnityEngine;
 
+// -----------------------------------------------------------------------------
+// Назначение файла: ToolSpawner.cs
+// Путь: Assets/Scripts/Game/ToolSpawner.cs
+// Описание: Содержит игровую логику, связанную с данным компонентом.
+// Примечание: Комментарии добавлены для ускорения поддержки и онбординга.
+// -----------------------------------------------------------------------------
+
+/// <summary>
+/// Реализует компонент `ToolSpawner` и инкапсулирует связанную с ним игровую логику.
+/// </summary>
 public class ToolSpawner : MonoBehaviour
 {
     [System.Serializable]
@@ -15,6 +25,9 @@ public class ToolSpawner : MonoBehaviour
 
     [SerializeField] private List<ToolSpawnInfo> _toolsToSpawn;
 
+    /// <summary>
+    /// Запускает начальную настройку после инициализации сцены.
+    /// </summary>
     private void Start()
     {
         foreach (var info in _toolsToSpawn)

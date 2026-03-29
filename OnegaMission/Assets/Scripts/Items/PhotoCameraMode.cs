@@ -5,6 +5,16 @@ using Player;
 using DG.Tweening;
 using Items;
 
+// -----------------------------------------------------------------------------
+// Назначение файла: PhotoCameraMode.cs
+// Путь: Assets/Scripts/Items/PhotoCameraMode.cs
+// Описание: Содержит игровую логику, связанную с данным компонентом.
+// Примечание: Комментарии добавлены для ускорения поддержки и онбординга.
+// -----------------------------------------------------------------------------
+
+/// <summary>
+/// Реализует компонент `PhotoCameraMode` и инкапсулирует связанную с ним игровую логику.
+/// </summary>
 public class PhotoCameraMode : MonoBehaviour
 {
     [Header("References")]
@@ -27,6 +37,9 @@ public class PhotoCameraMode : MonoBehaviour
     private PlayerMovement _playerMovement;
     private Unity.Cinemachine.CinemachineCamera _playerVirtualCam;
 
+    /// <summary>
+    /// Запускает начальную настройку после инициализации сцены.
+    /// </summary>
     private void Start()
     {
         _photoUI.SetActive(false);
@@ -34,18 +47,27 @@ public class PhotoCameraMode : MonoBehaviour
         _playerVirtualCam = FindObjectOfType<Unity.Cinemachine.CinemachineCamera>();
     }
 
+    /// <summary>
+    /// Срабатывает при активации компонента.
+    /// </summary>
     private void OnEnable()
     {
         _photoModeAction.action.performed += OnPhotoMode;
         _interactAction.action.performed += OnInteract;
     }
 
+    /// <summary>
+    /// Срабатывает при деактивации компонента.
+    /// </summary>
     private void OnDisable()
     {
         _photoModeAction.action.performed -= OnPhotoMode;
         _interactAction.action.performed -= OnInteract;
     }
 
+    /// <summary>
+    /// Выполняет операцию `OnPhotoMode` в рамках обязанностей текущего компонента.
+    /// </summary>
     private void OnPhotoMode(InputAction.CallbackContext ctx)
     {
         // Фоторежим доступен только если в руке фотоаппарат
@@ -61,6 +83,9 @@ public class PhotoCameraMode : MonoBehaviour
             ExitPhotoMode();
     }
 
+    /// <summary>
+    /// Выполняет операцию `OnInteract` в рамках обязанностей текущего компонента.
+    /// </summary>
     private void OnInteract(InputAction.CallbackContext ctx)
     {
         if (!IsActive) return;
@@ -68,6 +93,9 @@ public class PhotoCameraMode : MonoBehaviour
         StartCoroutine(TakePhotoRoutine());
     }
 
+    /// <summary>
+    /// Выполняет операцию `EnterPhotoMode` в рамках обязанностей текущего компонента.
+    /// </summary>
     private void EnterPhotoMode()
     {
         IsActive = true;
@@ -88,6 +116,9 @@ public class PhotoCameraMode : MonoBehaviour
         _photoUI.SetActive(true);
     }
 
+    /// <summary>
+    /// Выполняет операцию `ExitPhotoMode` в рамках обязанностей текущего компонента.
+    /// </summary>
     private void ExitPhotoMode()
     {
         IsActive = false;
@@ -105,6 +136,9 @@ public class PhotoCameraMode : MonoBehaviour
         _photoUI.SetActive(false);
     }
 
+    /// <summary>
+    /// Выполняет операцию `TakePhotoRoutine` в рамках обязанностей текущего компонента.
+    /// </summary>
     private System.Collections.IEnumerator TakePhotoRoutine()
     {
         _takingPhoto = true;

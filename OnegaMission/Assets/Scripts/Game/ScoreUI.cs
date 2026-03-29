@@ -1,6 +1,16 @@
 using UnityEngine;
 using TMPro;
 
+// -----------------------------------------------------------------------------
+// Назначение файла: ScoreUI.cs
+// Путь: Assets/Scripts/Game/ScoreUI.cs
+// Описание: Содержит игровую логику, связанную с данным компонентом.
+// Примечание: Комментарии добавлены для ускорения поддержки и онбординга.
+// -----------------------------------------------------------------------------
+
+/// <summary>
+/// Реализует компонент `ScoreUI` и инкапсулирует связанную с ним игровую логику.
+/// </summary>
 public class ScoreUI : MonoBehaviour
 {
     [Header("References")]
@@ -8,6 +18,9 @@ public class ScoreUI : MonoBehaviour
     
     private int _currentScore = 0;
 
+    /// <summary>
+    /// Запускает начальную настройку после инициализации сцены.
+    /// </summary>
     private void Start()
     {
         // Проверка на наличие текстового поля
@@ -17,6 +30,9 @@ public class ScoreUI : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Выполняет логику, которая должна обновляться каждый кадр.
+    /// </summary>
     private void Update()
     {
         // Проверяем, существует ли GameManager
@@ -30,6 +46,9 @@ public class ScoreUI : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Выполняет операцию `UpdateScoreDisplay` в рамках обязанностей текущего компонента.
+    /// </summary>
     private void UpdateScoreDisplay()
     {
         if (_scoreText != null)

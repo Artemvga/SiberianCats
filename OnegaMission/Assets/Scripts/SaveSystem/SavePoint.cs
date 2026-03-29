@@ -2,6 +2,16 @@ using Items;
 using UnityEngine;
 using Player;
 
+// -----------------------------------------------------------------------------
+// Назначение файла: SavePoint.cs
+// Путь: Assets/Scripts/SaveSystem/SavePoint.cs
+// Описание: Содержит игровую логику, связанную с данным компонентом.
+// Примечание: Комментарии добавлены для ускорения поддержки и онбординга.
+// -----------------------------------------------------------------------------
+
+/// <summary>
+/// Реализует компонент `SavePoint` и инкапсулирует связанную с ним игровую логику.
+/// </summary>
 public class SavePoint : MonoBehaviour, IInteractable
 {
     [Header("Save Point")]
@@ -19,12 +29,18 @@ public class SavePoint : MonoBehaviour, IInteractable
 
     public bool CanInteract(PlayerTools tools) => true;
 
+    /// <summary>
+    /// Выполняет операцию `Interact` в рамках обязанностей текущего компонента.
+    /// </summary>
     public void Interact()
     {
         SaveManager.Instance.SaveGame(_savePointName);
         Debug.Log("Игра сохранена!");
     }
 
+    /// <summary>
+    /// Выполняет операцию `GetInteractionMessage` в рамках обязанностей текущего компонента.
+    /// </summary>
     public string GetInteractionMessage()
     {
         return "Нажмите E, чтобы сохраниться";

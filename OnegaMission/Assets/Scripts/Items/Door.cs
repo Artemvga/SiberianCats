@@ -5,6 +5,16 @@ using Player;
 using EPOOutline;
 using Items;
 
+// -----------------------------------------------------------------------------
+// Назначение файла: Door.cs
+// Путь: Assets/Scripts/Items/Door.cs
+// Описание: Содержит игровую логику, связанную с данным компонентом.
+// Примечание: Комментарии добавлены для ускорения поддержки и онбординга.
+// -----------------------------------------------------------------------------
+
+/// <summary>
+/// Реализует компонент `Door` и инкапсулирует связанную с ним игровую логику.
+/// </summary>
 public class Door : MonoBehaviour, IInteractable
 {
     [Header("Door Info")]
@@ -35,6 +45,9 @@ public class Door : MonoBehaviour, IInteractable
     public string Lore => _lore;
     public bool ShouldShowRequirement => true;
 
+    /// <summary>
+    /// Запускает начальную настройку после инициализации сцены.
+    /// </summary>
     private void Start()
     {
         // Подсветка
@@ -50,11 +63,17 @@ public class Door : MonoBehaviour, IInteractable
         _openRotation = _closedRotation * Quaternion.AngleAxis(_rotationAngle, _rotationAxis);
     }
 
+    /// <summary>
+    /// Выполняет операцию `OnFocus` в рамках обязанностей текущего компонента.
+    /// </summary>
     public void OnFocus()
     {
         if (_outlinable != null) _outlinable.enabled = true;
     }
 
+    /// <summary>
+    /// Выполняет операцию `OnDefocus` в рамках обязанностей текущего компонента.
+    /// </summary>
     public void OnDefocus()
     {
         if (_outlinable != null) _outlinable.enabled = false;
@@ -62,17 +81,26 @@ public class Door : MonoBehaviour, IInteractable
 
     public bool CanInteract(PlayerTools tools) => true;
 
+    /// <summary>
+    /// Выполняет операцию `Interact` в рамках обязанностей текущего компонента.
+    /// </summary>
     public void Interact()
     {
         if (_isAnimating) return;
         StartCoroutine(RotateDoor(!_isOpen));
     }
 
+    /// <summary>
+    /// Выполняет операцию `GetInteractionMessage` в рамках обязанностей текущего компонента.
+    /// </summary>
     public string GetInteractionMessage()
     {
         return _isOpen ? "Нажмите E, чтобы закрыть дверь" : "Нажмите E, чтобы открыть дверь";
     }
 
+    /// <summary>
+    /// Выполняет операцию `RotateDoor` в рамках обязанностей текущего компонента.
+    /// </summary>
     private IEnumerator RotateDoor(bool open)
     {
         _isAnimating = true;

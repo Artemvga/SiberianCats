@@ -1,10 +1,23 @@
 using UnityEngine;
 using System.IO;
 
+// -----------------------------------------------------------------------------
+// Назначение файла: PhotoCapture.cs
+// Путь: Assets/Scripts/Items/PhotoCapture.cs
+// Описание: Содержит игровую логику, связанную с данным компонентом.
+// Примечание: Комментарии добавлены для ускорения поддержки и онбординга.
+// -----------------------------------------------------------------------------
+
+/// <summary>
+/// Реализует компонент `PhotoCapture` и инкапсулирует связанную с ним игровую логику.
+/// </summary>
 public static class PhotoCapture
 {
     private static int _photoCounter = 1;
 
+    /// <summary>
+    /// Выполняет операцию `GetPhotoFolder` в рамках обязанностей текущего компонента.
+    /// </summary>
     public static string GetPhotoFolder()
     {
         string basePath;
@@ -26,6 +39,9 @@ public static class PhotoCapture
         return folder;
     }
 
+    /// <summary>
+    /// Выполняет операцию `TakeScreenshot` в рамках обязанностей текущего компонента.
+    /// </summary>
     public static void TakeScreenshot(Camera camera, int width, int height)
     {
         string folder = GetPhotoFolder();

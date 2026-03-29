@@ -2,8 +2,18 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
 
+// -----------------------------------------------------------------------------
+// Назначение файла: InteractionUI.cs
+// Путь: Assets/Scripts/Items/InteractionUI.cs
+// Описание: Содержит игровую логику, связанную с данным компонентом.
+// Примечание: Комментарии добавлены для ускорения поддержки и онбординга.
+// -----------------------------------------------------------------------------
+
 namespace Items
 {
+    /// <summary>
+    /// Реализует компонент `InteractionUI` и инкапсулирует связанную с ним игровую логику.
+    /// </summary>
     public class InteractionUI : MonoBehaviour
     {
         [Header("Panels")]
@@ -19,6 +29,9 @@ namespace Items
         public UnityEvent OnShow;
         public UnityEvent OnClear;
 
+        /// <summary>
+        /// Инициализирует объект при создании компонента Unity.
+        /// </summary>
         private void Awake()
         {
             // При старте панель выключена
@@ -28,6 +41,9 @@ namespace Items
                 Debug.LogWarning("InteractionUI: _contentPanel не назначен!");
         }
 
+        /// <summary>
+        /// Выполняет операцию `Show` в рамках обязанностей текущего компонента.
+        /// </summary>
         public void Show(IInteractable interactable, string prompt)
         {
             if (interactable == null)
@@ -49,6 +65,9 @@ namespace Items
             OnShow?.Invoke();
         }
 
+        /// <summary>
+        /// Выполняет операцию `ClearContent` в рамках обязанностей текущего компонента.
+        /// </summary>
         public void ClearContent()
         {
             // Очищаем текст (опционально)

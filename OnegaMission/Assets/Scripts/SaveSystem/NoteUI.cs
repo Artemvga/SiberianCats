@@ -2,6 +2,16 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
+// -----------------------------------------------------------------------------
+// Назначение файла: NoteUI.cs
+// Путь: Assets/Scripts/SaveSystem/NoteUI.cs
+// Описание: Содержит игровую логику, связанную с данным компонентом.
+// Примечание: Комментарии добавлены для ускорения поддержки и онбординга.
+// -----------------------------------------------------------------------------
+
+/// <summary>
+/// Реализует компонент `NoteUI` и инкапсулирует связанную с ним игровую логику.
+/// </summary>
 public class NoteUI : MonoBehaviour
 {
     public static NoteUI Instance { get; private set; }
@@ -16,6 +26,9 @@ public class NoteUI : MonoBehaviour
 
     private static NoteUI _instance;
 
+    /// <summary>
+    /// Инициализирует объект при создании компонента Unity.
+    /// </summary>
     private void Awake()
     {
         if (_instance != null && _instance != this)
@@ -29,6 +42,9 @@ public class NoteUI : MonoBehaviour
         _closeButton.onClick.AddListener(Hide);
     }
 
+    /// <summary>
+    /// Выполняет операцию `Show` в рамках обязанностей текущего компонента.
+    /// </summary>
     public void Show(NoteData note)
     {
         _titleText.text = note.title;
@@ -43,6 +59,9 @@ public class NoteUI : MonoBehaviour
             PlayerController.Instance.enabled = false;
     }
 
+    /// <summary>
+    /// Выполняет операцию `Hide` в рамках обязанностей текущего компонента.
+    /// </summary>
     public void Hide()
     {
         _panel.SetActive(false);

@@ -2,6 +2,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using Items;
 
+// -----------------------------------------------------------------------------
+// Назначение файла: TrashSpawner.cs
+// Путь: Assets/Scripts/Items/TrashSpawner.cs
+// Описание: Содержит игровую логику, связанную с данным компонентом.
+// Примечание: Комментарии добавлены для ускорения поддержки и онбординга.
+// -----------------------------------------------------------------------------
+
+/// <summary>
+/// Реализует компонент `TrashSpawner` и инкапсулирует связанную с ним игровую логику.
+/// </summary>
 public class TrashSpawner : MonoBehaviour
 {
     [Header("Spawn Settings")]
@@ -18,6 +28,9 @@ public class TrashSpawner : MonoBehaviour
     private Dictionary<string, ItemTypeSO> _typeMap = new Dictionary<string, ItemTypeSO>();
     private List<TrashData> _availableTrash = new List<TrashData>();
 
+    /// <summary>
+    /// Инициализирует объект при создании компонента Unity.
+    /// </summary>
     private void Awake()
     {
         BuildTypeMap();
@@ -25,6 +38,9 @@ public class TrashSpawner : MonoBehaviour
         SpawnTrash();
     }
 
+    /// <summary>
+    /// Выполняет операцию `BuildTypeMap` в рамках обязанностей текущего компонента.
+    /// </summary>
     private void BuildTypeMap()
     {
         foreach (var type in _itemTypes)
@@ -33,6 +49,9 @@ public class TrashSpawner : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Выполняет операцию `LoadTrashData` в рамках обязанностей текущего компонента.
+    /// </summary>
     private void LoadTrashData()
     {
         if (_trashJson == null)
@@ -46,6 +65,9 @@ public class TrashSpawner : MonoBehaviour
         Debug.Log($"Загружено {_availableTrash.Count} записей мусора.");
     }
 
+    /// <summary>
+    /// Выполняет операцию `SpawnTrash` в рамках обязанностей текущего компонента.
+    /// </summary>
     private void SpawnTrash()
     {
         if (_spawnPoints == null || _spawnPoints.Length == 0)
@@ -106,6 +128,9 @@ public class TrashSpawner : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Выполняет операцию `GetTypeSO` в рамках обязанностей текущего компонента.
+    /// </summary>
     private ItemTypeSO GetTypeSO(string typeName)
     {
         if (_typeMap.TryGetValue(typeName, out ItemTypeSO so))

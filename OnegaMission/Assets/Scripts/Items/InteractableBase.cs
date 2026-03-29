@@ -3,8 +3,18 @@ using Player;
 using UnityEngine;
 using UnityEngine.Events;
 
+// -----------------------------------------------------------------------------
+// Назначение файла: InteractableBase.cs
+// Путь: Assets/Scripts/Items/InteractableBase.cs
+// Описание: Содержит игровую логику, связанную с данным компонентом.
+// Примечание: Комментарии добавлены для ускорения поддержки и онбординга.
+// -----------------------------------------------------------------------------
+
 namespace Items
 {
+    /// <summary>
+    /// Реализует компонент `InteractableBase` и инкапсулирует связанную с ним игровую логику.
+    /// </summary>
     public abstract class InteractableBase : MonoBehaviour, IInteractable
     {
         [Header("Item Info")]
@@ -28,6 +38,9 @@ namespace Items
 
         private Outlinable _outlinable;
 
+        /// <summary>
+        /// Запускает начальную настройку после инициализации сцены.
+        /// </summary>
         protected virtual void Start()
         {
             _outlinable = GetComponent<Outlinable>();
@@ -41,6 +54,9 @@ namespace Items
             _outlinable.enabled = false;
         }
 
+        /// <summary>
+        /// Выполняет операцию `OnFocus` в рамках обязанностей текущего компонента.
+        /// </summary>
         public virtual void OnFocus()
         {
             if (_outlinable != null && _outlinable.gameObject != null)
@@ -48,6 +64,9 @@ namespace Items
             OnFocusEvent?.Invoke();
         }
 
+        /// <summary>
+        /// Выполняет операцию `OnDefocus` в рамках обязанностей текущего компонента.
+        /// </summary>
         public virtual void OnDefocus()
         {
             // Проверка, что объект не уничтожен
@@ -57,6 +76,9 @@ namespace Items
             OnDefocusEvent?.Invoke();
         }
 
+        /// <summary>
+        /// Выполняет операцию `CanInteract` в рамках обязанностей текущего компонента.
+        /// </summary>
         public virtual bool CanInteract(PlayerTools tools)
         {
             return tools != null && tools.HasTool(ToolType.Tablet);
@@ -65,6 +87,9 @@ namespace Items
         public abstract void Interact();
         public abstract string GetInteractionMessage();
 
+        /// <summary>
+        /// Выполняет операцию `SetItemInfo` в рамках обязанностей текущего компонента.
+        /// </summary>
         public void SetItemInfo(string name, ItemTypeSO type, string description, string lore)
         {
             _itemName = name;

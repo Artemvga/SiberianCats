@@ -7,6 +7,16 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Events;
 
+// -----------------------------------------------------------------------------
+// Назначение файла: TabletUI.cs
+// Путь: Assets/Scripts/Items/TabletUI.cs
+// Описание: Содержит игровую логику, связанную с данным компонентом.
+// Примечание: Комментарии добавлены для ускорения поддержки и онбординга.
+// -----------------------------------------------------------------------------
+
+/// <summary>
+/// Реализует компонент `TabletUI` и инкапсулирует связанную с ним игровую логику.
+/// </summary>
 public class TabletUI : MonoBehaviour
 {
     [Header("UI References")]
@@ -24,6 +34,9 @@ public class TabletUI : MonoBehaviour
 
     public static TabletUI Instance { get; private set; }
 
+    /// <summary>
+    /// Инициализирует объект при создании компонента Unity.
+    /// </summary>
     private void Awake()
     {
         if (Instance != null && Instance != this)
@@ -36,11 +49,17 @@ public class TabletUI : MonoBehaviour
         IsOpen = false;
     }
 
+    /// <summary>
+    /// Выполняет логику, которая должна обновляться каждый кадр.
+    /// </summary>
     private void Update()
     {
         if (_isOpen) UpdateContent();
     }
 
+    /// <summary>
+    /// Срабатывает при активации компонента.
+    /// </summary>
     private void OnEnable()
     {
         if (InputManager.Instance != null)
@@ -52,6 +71,9 @@ public class TabletUI : MonoBehaviour
             PlayerTools.Instance.OnToolsChanged += OnToolsChanged;
     }
 
+    /// <summary>
+    /// Срабатывает при деактивации компонента.
+    /// </summary>
     private void OnDisable()
     {
         if (InputManager.Instance != null)
@@ -65,6 +87,9 @@ public class TabletUI : MonoBehaviour
 
     private void OnResearchPerformed(InputAction.CallbackContext context) => ToggleTablet();
 
+    /// <summary>
+    /// Выполняет операцию `ToggleTablet` в рамках обязанностей текущего компонента.
+    /// </summary>
     public void ToggleTablet()
     {
         if (!PlayerTools.Instance.HasTool(ToolType.Tablet) ||
@@ -98,16 +123,25 @@ public class TabletUI : MonoBehaviour
             ToggleTablet();
     }
 
+    /// <summary>
+    /// Выполняет операцию `OnInventoryChanged` в рамках обязанностей текущего компонента.
+    /// </summary>
     private void OnInventoryChanged()
     {
         if (_isOpen) UpdateContent();
     }
 
+    /// <summary>
+    /// Выполняет операцию `OnToolsChanged` в рамках обязанностей текущего компонента.
+    /// </summary>
     private void OnToolsChanged()
     {
         if (_isOpen) UpdateContent();
     }
 
+    /// <summary>
+    /// Выполняет операцию `UpdateContent` в рамках обязанностей текущего компонента.
+    /// </summary>
     private void UpdateContent()
     {
         // Отображаем количество мусора вместо списка

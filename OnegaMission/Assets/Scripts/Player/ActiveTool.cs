@@ -5,6 +5,16 @@ using InputSystemProject;
 using Player;
 using UnityEngine.InputSystem;
 
+// -----------------------------------------------------------------------------
+// Назначение файла: ActiveTool.cs
+// Путь: Assets/Scripts/Player/ActiveTool.cs
+// Описание: Содержит игровую логику, связанную с данным компонентом.
+// Примечание: Комментарии добавлены для ускорения поддержки и онбординга.
+// -----------------------------------------------------------------------------
+
+/// <summary>
+/// Реализует компонент `ActiveTool` и инкапсулирует связанную с ним игровую логику.
+/// </summary>
 public class ActiveTool : MonoBehaviour
 {
     public static ActiveTool Instance { get; private set; }
@@ -18,6 +28,9 @@ public class ActiveTool : MonoBehaviour
     private ToolType _currentTool = ToolType.None;
     private GameObject _currentModel;
 
+    /// <summary>
+    /// Инициализирует объект при создании компонента Unity.
+    /// </summary>
     private void Awake()
     {
         if (Instance != null && Instance != this)
@@ -28,11 +41,17 @@ public class ActiveTool : MonoBehaviour
         Instance = this;
     }
 
+    /// <summary>
+    /// Запускает начальную настройку после инициализации сцены.
+    /// </summary>
     private void Start()
     {
         if (_defaultHandModel != null) _defaultHandModel.SetActive(true);
     }
 
+    /// <summary>
+    /// Срабатывает при активации компонента.
+    /// </summary>
     private void OnEnable()
     {
         var playerMap = InputManager.Instance.actions.Player;
@@ -41,6 +60,9 @@ public class ActiveTool : MonoBehaviour
         playerMap.SelectTool3.performed += OnSelectTool3;
     }
 
+    /// <summary>
+    /// Срабатывает при деактивации компонента.
+    /// </summary>
     private void OnDisable()
     {
         if (InputManager.Instance == null) return;
@@ -50,6 +72,9 @@ public class ActiveTool : MonoBehaviour
         playerMap.SelectTool3.performed -= OnSelectTool3;
     }
 
+    /// <summary>
+    /// Выполняет операцию `RegisterTool` в рамках обязанностей текущего компонента.
+    /// </summary>
     public void RegisterTool(ToolType type, GameObject model)
     {
         if (_toolModels.ContainsKey(type))
@@ -71,6 +96,9 @@ public class ActiveTool : MonoBehaviour
     private void OnSelectTool2(InputAction.CallbackContext _) => SelectTool(ToolType.Scissors);
     private void OnSelectTool3(InputAction.CallbackContext _) => SelectTool(ToolType.PhotoCamera);
 
+    /// <summary>
+    /// Выполняет операцию `SelectTool` в рамках обязанностей текущего компонента.
+    /// </summary>
     private void SelectTool(ToolType type)
     {
         if (!PlayerTools.Instance.HasTool(type))
@@ -88,6 +116,9 @@ public class ActiveTool : MonoBehaviour
         EquipTool(type);
     }
 
+    /// <summary>
+    /// Выполняет операцию `EquipTool` в рамках обязанностей текущего компонента.
+    /// </summary>
     private void EquipTool(ToolType type)
     {
         // Если экипируем не планшет, а планшет был открыт, закрываем его
@@ -113,6 +144,9 @@ public class ActiveTool : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Выполняет операцию `UnequipCurrentTool` в рамках обязанностей текущего компонента.
+    /// </summary>
     private void UnequipCurrentTool()
     {
         // Если снимаем планшет, закрываем его

@@ -4,6 +4,16 @@ using Player;
 using UnityEngine;
 using UnityEngine.Events;
 
+// -----------------------------------------------------------------------------
+// Назначение файла: SortingManager.cs
+// Путь: Assets/Scripts/Sorting/SortingManager.cs
+// Описание: Содержит игровую логику, связанную с данным компонентом.
+// Примечание: Комментарии добавлены для ускорения поддержки и онбординга.
+// -----------------------------------------------------------------------------
+
+/// <summary>
+/// Реализует компонент `SortingManager` и инкапсулирует связанную с ним игровую логику.
+/// </summary>
 public class SortingManager : MonoBehaviour
 {
     public static SortingManager Instance { get; private set; }
@@ -37,6 +47,9 @@ public class SortingManager : MonoBehaviour
 
     private void Awake() => Instance = this;
 
+    /// <summary>
+    /// Выполняет логику, которая должна обновляться каждый кадр.
+    /// </summary>
     private void Update()
     {
         if (!_isSortingActive) return;
@@ -54,6 +67,9 @@ public class SortingManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Выполняет операцию `StartSorting` в рамках обязанностей текущего компонента.
+    /// </summary>
     public void StartSorting(SortingTable table)
     {
         _currentTable = table;
@@ -70,6 +86,9 @@ public class SortingManager : MonoBehaviour
         SpawnNextItem();
     }
 
+    /// <summary>
+    /// Выполняет операцию `StopSorting` в рамках обязанностей текущего компонента.
+    /// </summary>
     public void StopSorting()
     {
         _isSortingActive = false;
@@ -93,6 +112,9 @@ public class SortingManager : MonoBehaviour
         OnSortingEnded?.Invoke();
     }
 
+    /// <summary>
+    /// Выполняет операцию `SpawnNextItem` в рамках обязанностей текущего компонента.
+    /// </summary>
     private void SpawnNextItem()
     {
         if (_remainingItems == null || _remainingItems.Count == 0)
@@ -134,6 +156,9 @@ public class SortingManager : MonoBehaviour
         Debug.Log($"Spawned item: {_currentItem.ItemName}, remaining: {_remainingItems.Count}");
     }
 
+    /// <summary>
+    /// Выполняет операцию `CheckSort` в рамках обязанностей текущего компонента.
+    /// </summary>
     public void CheckSort(ItemTypeSO binType)
     {
         if (_currentItem == null) return;

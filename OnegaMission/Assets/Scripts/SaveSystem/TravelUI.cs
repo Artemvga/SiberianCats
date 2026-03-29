@@ -2,6 +2,16 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
+// -----------------------------------------------------------------------------
+// Назначение файла: TravelUI.cs
+// Путь: Assets/Scripts/SaveSystem/TravelUI.cs
+// Описание: Содержит игровую логику, связанную с данным компонентом.
+// Примечание: Комментарии добавлены для ускорения поддержки и онбординга.
+// -----------------------------------------------------------------------------
+
+/// <summary>
+/// Реализует компонент `TravelUI` и инкапсулирует связанную с ним игровую логику.
+/// </summary>
 public class TravelUI : MonoBehaviour
 {
     public static TravelUI Instance { get; private set; }
@@ -14,6 +24,9 @@ public class TravelUI : MonoBehaviour
     [SerializeField] private Button _sealButton;
     [SerializeField] private Button _closeButton;
 
+    /// <summary>
+    /// Инициализирует объект при создании компонента Unity.
+    /// </summary>
     private void Awake()
     {
         if (Instance != null && Instance != this)
@@ -23,6 +36,9 @@ public class TravelUI : MonoBehaviour
         _panel.SetActive(false);
     }
 
+    /// <summary>
+    /// Запускает начальную настройку после инициализации сцены.
+    /// </summary>
     private void Start()
     {
         _bayButton.onClick.AddListener(() => LoadScene("Bay"));
@@ -32,6 +48,9 @@ public class TravelUI : MonoBehaviour
         _closeButton.onClick.AddListener(Hide);
     }
 
+    /// <summary>
+    /// Выполняет операцию `Show` в рамках обязанностей текущего компонента.
+    /// </summary>
     public void Show()
     {
         _panel.SetActive(true);
@@ -42,6 +61,9 @@ public class TravelUI : MonoBehaviour
             PlayerController.Instance.enabled = false;
     }
 
+    /// <summary>
+    /// Выполняет операцию `Hide` в рамках обязанностей текущего компонента.
+    /// </summary>
     public void Hide()
     {
         _panel.SetActive(false);
@@ -52,6 +74,9 @@ public class TravelUI : MonoBehaviour
             PlayerController.Instance.enabled = true;
     }
 
+    /// <summary>
+    /// Выполняет операцию `LoadScene` в рамках обязанностей текущего компонента.
+    /// </summary>
     private void LoadScene(string sceneName)
     {
         Hide();

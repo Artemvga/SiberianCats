@@ -3,6 +3,13 @@ using Player;
 using UnityEngine;
 using UnityEngine.Events;
 
+// -----------------------------------------------------------------------------
+// Назначение файла: InteractionPoint.cs
+// Путь: Assets/Scripts/Items/InteractionPoint.cs
+// Описание: Содержит игровую логику, связанную с данным компонентом.
+// Примечание: Комментарии добавлены для ускорения поддержки и онбординга.
+// -----------------------------------------------------------------------------
+
 namespace Items
 {
     /// <summary>
@@ -26,6 +33,9 @@ namespace Items
         // Показываем требование, если не хватает инструментов
         public override bool ShouldShowRequirement => true;
 
+        /// <summary>
+        /// Выполняет операцию `CanInteract` в рамках обязанностей текущего компонента.
+        /// </summary>
         public override bool CanInteract(PlayerTools tools)
         {
             if (tools == null) return false;
@@ -45,12 +55,18 @@ namespace Items
             }
         }
 
+        /// <summary>
+        /// Выполняет операцию `GetInteractionMessage` в рамках обязанностей текущего компонента.
+        /// </summary>
         public override string GetInteractionMessage()
         {
             //asd
             return _successMessage;
         }
 
+        /// <summary>
+        /// Выполняет операцию `Interact` в рамках обязанностей текущего компонента.
+        /// </summary>
         public override void Interact()
         {
             if (CanInteract(PlayerTools.Instance))

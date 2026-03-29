@@ -1,5 +1,12 @@
 using UnityEngine;
 
+// -----------------------------------------------------------------------------
+// Назначение файла: InputManager.cs
+// Путь: Assets/Scripts/InputSystem/InputManager.cs
+// Описание: Содержит игровую логику, связанную с данным компонентом.
+// Примечание: Комментарии добавлены для ускорения поддержки и онбординга.
+// -----------------------------------------------------------------------------
+
 namespace InputSystemProject
 {
     /// <summary>
@@ -12,6 +19,9 @@ namespace InputSystemProject
         public InputSystem_Actions actions;
 
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
+        /// <summary>
+        /// Выполняет операцию `Init` в рамках обязанностей текущего компонента.
+        /// </summary>
         public static void Init()
         {
             if (Instance != null) return;
@@ -20,6 +30,9 @@ namespace InputSystemProject
             DontDestroyOnLoad(go);
         }
 
+        /// <summary>
+        /// Инициализирует объект при создании компонента Unity.
+        /// </summary>
         private void Awake()
         {
             if (Instance != null && Instance != this)
@@ -31,6 +44,9 @@ namespace InputSystemProject
             actions.Enable();
         }
 
+        /// <summary>
+        /// Выполняет операцию `ChangeInputMap` в рамках обязанностей текущего компонента.
+        /// </summary>
         public void ChangeInputMap(InputType inputType)
         {
             switch (inputType)
@@ -46,6 +62,9 @@ namespace InputSystemProject
             }
         }
 
+        /// <summary>
+        /// Освобождает ресурсы перед уничтожением объекта.
+        /// </summary>
         private void OnDestroy()
         {
             if (Instance == this)

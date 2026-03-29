@@ -5,6 +5,16 @@ using UnityEngine.SceneManagement;
 using Items;
 using Player;
 
+// -----------------------------------------------------------------------------
+// Назначение файла: SaveManager.cs
+// Путь: Assets/Scripts/SaveSystem/SaveManager.cs
+// Описание: Содержит игровую логику, связанную с данным компонентом.
+// Примечание: Комментарии добавлены для ускорения поддержки и онбординга.
+// -----------------------------------------------------------------------------
+
+/// <summary>
+/// Реализует компонент `SaveManager` и инкапсулирует связанную с ним игровую логику.
+/// </summary>
 public class SaveManager : MonoBehaviour
 {
     public static SaveManager Instance { get; private set; }
@@ -18,6 +28,9 @@ public class SaveManager : MonoBehaviour
 
     public SaveData CurrentSave => _currentSave;
 
+    /// <summary>
+    /// Инициализирует объект при создании компонента Unity.
+    /// </summary>
     private void Awake()
     {
         if (Instance != null && Instance != this)
@@ -31,6 +44,9 @@ public class SaveManager : MonoBehaviour
         _savePath = Path.Combine(Application.persistentDataPath, _saveFileName);
     }
 
+    /// <summary>
+    /// Запускает начальную настройку после инициализации сцены.
+    /// </summary>
     private void Start()
     {
         if (_autoLoadOnStart && File.Exists(_savePath))
@@ -39,6 +55,9 @@ public class SaveManager : MonoBehaviour
             NewGame();
     }
 
+    /// <summary>
+    /// Выполняет операцию `SaveGame` в рамках обязанностей текущего компонента.
+    /// </summary>
     public void SaveGame(string savePointName = "")
     {
         _currentSave.sceneName = SceneManager.GetActiveScene().name;
@@ -75,6 +94,9 @@ public class SaveManager : MonoBehaviour
         Debug.Log($"Игра сохранена в {_savePath}");
     }
 
+    /// <summary>
+    /// Выполняет операцию `LoadGame` в рамках обязанностей текущего компонента.
+    /// </summary>
     public void LoadGame()
     {
         if (!File.Exists(_savePath))
@@ -119,6 +141,9 @@ public class SaveManager : MonoBehaviour
         SceneManager.LoadScene(_currentSave.sceneName);
     }
 
+    /// <summary>
+    /// Выполняет операцию `NewGame` в рамках обязанностей текущего компонента.
+    /// </summary>
     public void NewGame()
     {
         _currentSave = new SaveData();
@@ -139,6 +164,9 @@ public class SaveManager : MonoBehaviour
     public bool HasSave() => File.Exists(_savePath);
 
     // Фабричный метод для создания инструмента по типу
+    /// <summary>
+    /// Выполняет операцию `CreateToolByType` в рамках обязанностей текущего компонента.
+    /// </summary>
     private ToolItem CreateToolByType(ToolType type)
     {
         string prefabName = type switch
@@ -165,6 +193,9 @@ public class SaveManager : MonoBehaviour
     }
 
     // Фабричный метод для создания мусора по ID
+    /// <summary>
+    /// Выполняет операцию `CreateTrashById` в рамках обязанностей текущего компонента.
+    /// </summary>
     private TrashItem CreateTrashById(string id)
     {
         GameObject prefab = Resources.Load<GameObject>($"TrashPrefabs/{id}");
@@ -198,6 +229,9 @@ public class SaveManager : MonoBehaviour
         return trash;
     }
 
+    /// <summary>
+    /// Выполняет операцию `GetItemTypeSO` в рамках обязанностей текущего компонента.
+    /// </summary>
     private ItemTypeSO GetItemTypeSO(string typeName)
     {
         // Здесь нужна глобальная таблица, как в TrashSpawner.

@@ -2,6 +2,16 @@ using Items;
 using UnityEngine;
 using Player;
 
+// -----------------------------------------------------------------------------
+// Назначение файла: Note.cs
+// Путь: Assets/Scripts/SaveSystem/Note.cs
+// Описание: Содержит игровую логику, связанную с данным компонентом.
+// Примечание: Комментарии добавлены для ускорения поддержки и онбординга.
+// -----------------------------------------------------------------------------
+
+/// <summary>
+/// Реализует компонент `Note` и инкапсулирует связанную с ним игровую логику.
+/// </summary>
 public class Note : MonoBehaviour, IInteractable
 {
     [Header("Note Data")]
@@ -16,11 +26,17 @@ public class Note : MonoBehaviour, IInteractable
     public string Lore => "";
     public bool ShouldShowRequirement => true;
 
+    /// <summary>
+    /// Инициализирует объект при создании компонента Unity.
+    /// </summary>
     private void Awake()
     {
         LoadNoteData();
     }
 
+    /// <summary>
+    /// Выполняет операцию `LoadNoteData` в рамках обязанностей текущего компонента.
+    /// </summary>
     private void LoadNoteData()
     {
         if (_notesJson == null)
@@ -48,6 +64,9 @@ public class Note : MonoBehaviour, IInteractable
 
     public bool CanInteract(PlayerTools tools) => true;
 
+    /// <summary>
+    /// Выполняет операцию `Interact` в рамках обязанностей текущего компонента.
+    /// </summary>
     public void Interact()
     {
         if (_cachedNote != null)
@@ -56,6 +75,9 @@ public class Note : MonoBehaviour, IInteractable
             Debug.LogWarning($"Записка {_noteId} не загружена");
     }
 
+    /// <summary>
+    /// Выполняет операцию `GetInteractionMessage` в рамках обязанностей текущего компонента.
+    /// </summary>
     public string GetInteractionMessage()
     {
         return "Нажмите E, чтобы прочитать записку";
